@@ -1,5 +1,5 @@
 # Car_Website_IUH
-### Giải thích cây thư mục của dự án:
+## Giải thích cây thư mục của dự án:
 - `index.html`: Trang chính của dự án
 - `assets/`: Chứa các tài nguyên như CSS, JavaScript, hình ảnh và font.
   - `css/`: Chứa tệp CSS tùy chỉnh và Bootstrap.
