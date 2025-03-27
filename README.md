@@ -9,3 +9,8 @@
 - `pages/`: Chứa các trang HTML phụ.
 - `components/`: Chứa các phần tái sử dụng như header và footer.
 - `README.md`: Mô tả về dự án 
+
+## Cách làm việc với dự án:
+1. tải dự án về máy: 
+```bash
+git clone https://github.com/Thanhmay2406/Car_Website_IUH
