@@ -13,6 +13,16 @@ class HeaderComponent extends HTMLElement {
                 font-weight: normal;
             }
 
+            @keyframes borderExpand {
+                0% {
+                    width: 0;
+                }
+
+                100% {
+                    width: 100%;
+                }
+            }
+
             header {
                 padding: 0;
                 margin: 0;
@@ -23,6 +33,15 @@ class HeaderComponent extends HTMLElement {
                 height: 65px;
                 background-color: rgba(0, 0, 0, 0);
                 transition: background 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            header:hover {
+                background-color: white;
+                color: black;
+            }
+
+            header:hover ul li a {
+                color: black;
             }
 
             ul {
@@ -50,12 +69,13 @@ class HeaderComponent extends HTMLElement {
                 border-bottom: 2px solid white;
             }
 
-            .scrolled a {
-                color: rgba(0, 0, 0, 1) !important;
+            .scrolled {
+                background-color: white !important;
+                box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             }
 
-            .scrolled a:hover {
-                border-bottom: 2px solid black !important;
+            .scrolled ul li a {
+                color: black !important;
             }
         </style>
         <header>
@@ -75,16 +95,11 @@ class HeaderComponent extends HTMLElement {
 
     handleScroll() {
         const header = this.shadowRoot.querySelector("header");
-        const ul = this.shadowRoot.querySelector("ul");
 
         if (window.scrollY > 300) {
-            header.style.backgroundColor = "white";
-            header.style.boxShadow = "0px 4px 6px rgba(0, 0, 0, 1)";
-            ul.classList.add("scrolled");
+            header.classList.add("scrolled");
         } else {
-            header.style.backgroundColor = "rgba(0, 0, 0, 0)";
-            header.style.boxShadow = "none";
-            ul.classList.remove("scrolled");
+            header.classList.remove("scrolled");
         }
     }
 
