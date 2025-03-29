@@ -77,7 +77,7 @@ class HeaderComponent extends HTMLElement {
         const header = this.shadowRoot.querySelector("header");
         const ul = this.shadowRoot.querySelector("ul");
 
-        if (window.scrollY > 650) {
+        if (window.scrollY > 300) {
             header.style.backgroundColor = "white";
             header.style.boxShadow = "0px 4px 6px rgba(0, 0, 0, 1)";
             ul.classList.add("scrolled");
