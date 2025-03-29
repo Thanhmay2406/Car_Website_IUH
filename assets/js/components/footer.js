@@ -116,6 +116,7 @@ class FootterComponent extends HTMLElement {
                 width: 100%;
                 margin-top: 30px;
                 height: 100px;
+                background-color: white;
             }
 
             #end ul {

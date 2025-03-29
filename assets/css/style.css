@@ -7,4 +7,38 @@
 .container {
     position: relative;
     height: 2000px;
+    /* padding-top: 65px; */
+}
+
+@font-face {
+    font-family: "Lexend_Deca";
+    src: url(../fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf);
+    font-weight: normal;
+    font-size: nomal;
+}
+
+#intro {
+    height: 900px;
+    width: 100%;
+    background-image: url(../images/homepage/01.webp);
+    background-repeat: no-repeat;
+    position: relative;
+    font-family: "Lexend_Deca", sans-serif;
+}
+
+#intro a {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 100px;
+    margin-right: 100px;
+    color: white;
+    text-decoration: none;
+    padding: 20px 30px;
+    background-color: #3878d6;
+    /* border-radius: 10px; */
+}
+
+#intro a:hover {
+    background-color: #1854af;
 }
