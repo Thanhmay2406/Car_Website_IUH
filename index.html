@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="shortcut icon" href="assets/images/logo/logo.png" type="image/x-icon">
 </head>
+
 <body>
     <!-- <header-component></header-component> -->
     <!-- <footer-component></footer-component> -->
@@ -17,13 +19,111 @@
         <div id="intro">
             <a href="">Đăng ký lái thử</a>
         </div>
-        <div class="chosse-car">
+        <div id="chose-car">
 
-            <div class="tab"></div>
-            <div class="sub-tab"></div>
-            <div class="car-list"></div>
+            <p>KHÁM PHÁ TẤT CẢ MẪU XE BMW</p>
+
+            <h1>CHỌN DÒNG XE</h1>
+
+            <div class="tabs">
+                <button class="tab-btn active" data-category="BMW">BMW</button>
+                <button class="tab-btn" data-category="BMW M">BMW M</button>
+                <button class="tab-btn" data-category="BMW i">BMW i</button>
+            </div>
+        
+            <!-- Tabs phụ -->
+            <div class="sub-tabs">
+                <button class="sub-tab-btn active" data-type="3">3</button>
+                <button class="sub-tab-btn" data-type="4">4</button>
+                <button class="sub-tab-btn" data-type="5">5</button>
+                <button class="sub-tab-btn" data-type="7">7</button>
+                <button class="sub-tab-btn" data-type="X">X</button>
+                <button class="sub-tab-btn" data-type="Z">Z</button>
+            </div>
+        
+            <!-- Danh sách xe -->
+            <div class="car-list">
+                <div class="car-item" data-category="BMW" data-type="3">
+                    <img src="assets/images/homepage/new_bmw_3_series_sedan.webp" alt="">
+                    <h3>BMW 3 Series</h3>
+                    <p>Xăng</p>
+                    <p>Giá từ 1.529.000.000 VNĐ</p>
+                </div>
+        
+                <div class="car-item" data-category="BMW" data-type="4">
+                    <img src="assets/images/homepage/4_gc.webp" alt="BMW 4 Series Convertible">
+                    <h3>BMW 4 Series Gran Coupé</h3>
+                    <p>Xăng</p>
+                    <p>Giá từ 2.629.000.000 VNĐ</p>
+                </div>
+
+                <div class="car-item" data-category="BMW" data-type="4">
+                    <img src="assets/images/homepage/4_convertible.webp" alt="BMW 4 Series Convertible">
+                    <h3>BMW 4 Series Convertible</h3>
+                    <p>Xăng</p>
+                    <p>Giá từ 3.115.000.000 VNĐ</p>
+                </div>
+
+                <div class="car-item" data-category="BMW" data-type="5">
+                    <img src="assets/images/homepage/new_bmw_5_series.webp" alt="BMW 4 Series Convertible">
+                    <h3>BMW 5 Series</h3>
+                    <p>Xăng</p>
+                    <p>Giá từ 1.979.000.000 VNĐ</p>
+                </div>
+
+                <div class="car-item" data-category="BMW" data-type="7">
+                    <img src="assets/images/homepage/7_series.webp" alt="BMW 4 Series Convertible">
+                    <h3>BMW 7 Series</h3>
+                    <p>Xăng</p>
+                    <p>Giá từ 4.499.000.000 VNĐ</p>
+                </div>
+            </div>
         </div>
+
+        <div class="utilities">
+            <p>TIỆN ÍCH BMW</p>
+            <h2>CHỌN DỊCH VỤ BMW</h2>
+            <div class="utilities-list">
+                <div class="extend-item">
+                    <img src="assets/images/homepage/microsoftteams_image_8_.webp" alt="">
+                    <p>Đặt hẹn dịch vụ BMW</p>
+                    <button>Đặt Ngay</button>
+                </div>
+
+                <div class="extend-item" style="margin-left: 200px; margin-right: 200px;">
+                    <img src="assets/images/homepage/microsoftteams_image_7_.webp" alt="">
+                    <p>Đặt lịch lái thử</p>
+                    <button>Đặt Lịch Ngay</button>
+                </div>
+
+                <div class="extend-item">
+                    <img src="assets/images/homepage/microsoftteams_image_9_.webp" alt="">
+                    <p>Đăng ký nhận ưu đãi</p>
+                    <button>Đăng Ký Ngay</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-3">
+            <div style="color: white; margin-left: 50px;">
+                <p>THE FIRST-EVER XM</p>
+                <h1>BMW XM</h1>
+                <h1 style="margin-bottom: 30px;">THẾ HỆ ĐẦU TIÊN</h1>
+                <a href="">Khám Phá Ngay</a>
+            </div>
+        </div>
+
+        <div class="slide-4">
+            <div id="left">
+                <img src="assets/images/homepage/03.webp" alt="">
+            </div>
+            <div id="right"></div>
+        </div>
+
         <footer-component></footer-component>
     </div>
+
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>

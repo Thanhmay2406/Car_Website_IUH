@@ -105,13 +105,13 @@ class HeaderComponent extends HTMLElement {
         <header id="navbar">
             <img style="width: 50px; height: 50px; margin-left: 20px; margin-top: 10px;" src="../assets/images/logo/logo.png" alt="">
             <ul style="margin-left: 10px; position: relative;">
-                <li><a href="">Trang chủ</a></li>
+                <li><a href="../index.html">Trang chủ</a></li>
                 <li><a href="">Mẫu xe</a></li>
                 <li><a href="">Đặt hẹn lái xe thử</a></li>
                 <li><a href="">Hệ thống phân phối</a></li>
                 <li><a href="">Tìm hiểu thêm</a></li>
                 <li style="position: absolute; right: 100px;">
-                    <a href="">
+                    <a href="../pages/login.html">
                         Đăng nhập
                     </a>
                 </li>
