@@ -6,7 +6,7 @@
 
 .container {
     position: relative;
-    height: 4000px;
+    height: 3200px;
     /* padding-top: 65px; */
     font-family: "Lexend_Deca", sans-serif;
 }
@@ -121,5 +121,23 @@
 
 .slide-3 a:hover {
     background-color: white;
+    color: black;
+}
+
+.slide-4 {
+    margin-top: 30px;
+    margin-left: 30px;   
+    display: flex;
+    align-items: center;
+}
+
+.slide-4 #right {
+    margin-left: 30px;
+}
+
+#right a {
+    padding: 10px 50px;
+    border: 1px solid black;
+    text-decoration: none;
     color: black;
 }
