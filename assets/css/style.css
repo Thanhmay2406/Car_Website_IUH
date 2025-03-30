@@ -141,3 +141,8 @@
     text-decoration: none;
     color: black;
 }
+
+#right a:hover {
+    color: white;
+    background-color: black;
+}
