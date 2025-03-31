@@ -25,7 +25,7 @@ class HeaderComponent extends HTMLElement {
                 width: 100%;
                 top: 0;
                 left: 0;
-                height: 65px;
+                height: 4.0625rem;
                 background-color: rgba(0, 0, 0, 0);
                 transition: background 0.3s ease, box-shadow 0.3s ease;
             }
@@ -42,7 +42,7 @@ class HeaderComponent extends HTMLElement {
             ul {
                 display: flex;
                 font-family: "Lexend_Deca", sans-serif;
-                height: 65px;
+                height: 4.0625rem;
                 align-items: center;
                 margin: 0;
                 padding: 0;
@@ -51,13 +51,13 @@ class HeaderComponent extends HTMLElement {
 
             ul li {
                 list-style-type: none;
-                margin-left: 10px;
+                margin-left: 0.625rem;
             }
 
             ul li a {
-                padding: 20px 10px;
+                padding: 1.25rem 0.625rem;
                 text-decoration: none;
-                height: 65px;
+                height: 4.0625rem;
                 color: white;
                 transition: color 0.3s ease, border-bottom 0.3s ease;
                 position: relative;
@@ -67,9 +67,9 @@ class HeaderComponent extends HTMLElement {
                 content: "";
                 position: absolute;
                 left: 0;
-                bottom: -2px;
+                bottom: -0.125rem;
                 width: 0;
-                height: 2px;
+                height: 0.125rem;
                 background: #3878d6;
                 transition: width 0.3s ease-in-out;
             }
@@ -84,7 +84,7 @@ class HeaderComponent extends HTMLElement {
 
             .scrolled {
                 background-color: white !important;
-                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0px 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
             }
 
             .scrolled a {
@@ -93,9 +93,7 @@ class HeaderComponent extends HTMLElement {
 
             .scrolled a:hover {
                 color: #3878d6 !important;
-                /* Khi hover vẫn đổi màu giống bình thường */
             }
-
 
             .scrolled a:hover::after {
                 background: #3878d6 !important;
@@ -103,21 +101,19 @@ class HeaderComponent extends HTMLElement {
         </style>
 
         <header id="navbar">
-            <img style="width: 50px; height: 50px; margin-left: 20px; margin-top: 10px;" src="../assets/images/logo/logo.png" alt="">
-            <ul style="margin-left: 10px; position: relative;">
+            <img style="width: 3.125rem; height: 3.125rem; margin-left: 1.25rem; margin-top: 0.625rem;" src="../assets/images/logo/logo.png" alt="">
+            <ul style="margin-left: 0.625rem; position: relative;">
                 <li><a href="../index.html">Trang chủ</a></li>
                 <li><a href="">Mẫu xe</a></li>
                 <li><a href="">Đặt hẹn lái xe thử</a></li>
                 <li><a href="">Hệ thống phân phối</a></li>
                 <li><a href="">Tìm hiểu thêm</a></li>
-                <li style="position: absolute; right: 100px;">
-                    <a href="../pages/login.html">
-                        Đăng nhập
-                    </a>
+                <li style="position: absolute; right: 6.25rem;">
+                    <a href="../pages/login.html">Đăng nhập</a>
                 </li>
-                <li style="position: absolute; right: 30px;">
+                <li style="position: absolute; right: 1.875rem;">
                     <a href="">
-                        <svg style="width: 20px; height: 20px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+                        <svg style="width: 1.25rem; height: 1.25rem;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
                     </a>
                 </li>
             </ul>
@@ -131,7 +127,7 @@ class HeaderComponent extends HTMLElement {
     handleScroll() {
         const header = this.shadowRoot.querySelector("header");
 
-        if (window.scrollY > 300) {
+        if (window.scrollY > 18.75 * 16) {
             header.classList.add("scrolled");
         } else {
             header.classList.remove("scrolled");
