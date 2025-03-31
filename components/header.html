@@ -9,6 +9,7 @@
 
 <body>
     <style>
+        /* Các style hiện tại của header */
         @font-face {
             font-family: "Lexend_Deca";
             src: url(../../fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf);
@@ -68,20 +69,17 @@
             align-items: center;
         }
 
-        /* Sửa phần border bottom */
         ul li:not(.dropdown) a::after {
             content: "";
             position: absolute;
             left: 0;
             bottom: 0.5rem;
-            /* Thay đổi từ bottom: 0 thành bottom: 0.5rem để nâng border lên */
             width: 0;
             height: 0.125rem;
             background: #3878d6;
             transition: width 0.3s ease-in-out;
         }
 
-        /* Riêng cho dropdown thì không có border bottom */
         ul li.dropdown a::after {
             display: none;
         }
@@ -111,7 +109,6 @@
             background: #3878d6 !important;
         }
 
-        /* Dropdown styles */
         .dropdown {
             position: relative;
         }
@@ -120,7 +117,6 @@
             display: none;
             position: absolute;
             top: calc(100% + 0.125rem);
-            /* Thêm khoảng cách bằng chiều cao border */
             left: 0;
             background-color: white;
             min-width: 250px;
@@ -185,8 +181,186 @@
         }
 
         #navbar ul li a {
-            padding-top: 10px;
+            padding-top: 0.625rem;
             padding-bottom: 0;
+        }
+
+        /* Style cho modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 400px;
+            max-width: 90%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            animation: modalopen 0.3s;
+            position: relative;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close {
+            color: #aaa;
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .close:hover {
+            color: #333;
+        }
+        
+        .modal-header {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .modal-header h2 {
+            margin: 0;
+            color: #3878d6;
+            font-size: 1.5rem;
+        }
+        
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #555;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #3878d6;
+            box-shadow: 0 0 0 2px rgba(56, 120, 214, 0.2);
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #3878d6;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2c62b5;
+        }
+        
+        .btn-secondary {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .forgot-password {
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+        
+        .forgot-password a {
+            color: #3878d6;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        .account-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            z-index: 100;
+            padding: 0.5rem 0;
+        }
+        
+        .account-dropdown a {
+            color: #333 !important;
+            padding: 0.75rem 1rem;
+            display: block;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        
+        .account-dropdown a:hover {
+            background-color: #f5f5f5;
+            color: #3878d6 !important;
+        }
+        
+        .account-wrapper {
+            position: relative;
+        }
+        
+        .account-wrapper:hover .account-dropdown {
+            display: block;
         }
     </style>
 
@@ -196,7 +370,7 @@
         <ul style="margin-left: 0.625rem; position: relative;">
             <li><a href="../index.html">Trang chủ</a></li>
             <li><a href="">Mẫu xe</a></li>
-            <li><a href="">Đặt hẹn lái xe thử</a></li>
+            <li><a href="/pages/test-drive.html">Đặt hẹn lái xe thử</a></li>
             <li><a href="">Hệ thống phân phối</a></li>
             <li class="dropdown">
                 <a href="">Tìm hiểu thêm</a>
@@ -235,8 +409,14 @@
                     </div>
                 </div>
             </li>
-            <li style="position: absolute; right: 6.25rem;">
-                <a href="../pages/login.html">Đăng nhập</a>
+            <li style="position: absolute; right: 6.25rem;" class="account-wrapper">
+                <a href="#" id="loginLink">Đăng nhập</a>
+                <div class="account-dropdown" id="accountDropdown">
+                    <a href="#" id="profileLink">Hồ sơ của tôi</a>
+                    <a href="#" id="ordersLink">Đơn hàng</a>
+                    <a href="#" id="testDrivesLink">Lái thử đã đặt</a>
+                    <a href="#" id="logoutLink">Đăng xuất</a>
+                </div>
             </li>
             <li style="position: absolute; right: 1.875rem;">
                 <a href="">
@@ -249,18 +429,130 @@
             </li>
         </ul>
     </header>
+    
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2>Đăng nhập</h2>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="username">Email hoặc số điện thoại</label>
+                    <input type="text" id="username" placeholder="Nhập email hoặc số điện thoại">
+                    <div class="error-message" id="usernameError">Vui lòng nhập email hoặc số điện thoại</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" id="password" placeholder="Nhập mật khẩu">
+                    <div class="error-message" id="passwordError">Vui lòng nhập mật khẩu</div>
+                </div>
+                <div class="forgot-password">
+                    <a href="#" id="forgotPassword">Quên mật khẩu?</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="closeModal">Đóng</button>
+                <button class="btn btn-primary" id="loginBtn">Đăng nhập</button>
+            </div>
+        </div>
+    </div>
 
-    <div style="height: 2000px; background-color: aqua;"></div>
+    <div style="height: 2000px; background-color: gray;"></div>
 
     <script>
-        window.addEventListener("scroll", function () {
-            const navbar = document.getElementById("navbar");
-            if (window.scrollY > 50) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
+        this.handleScroll = this.handleScroll.bind(this);
+        window.addEventListener("scroll", this.handleScroll);
+
+        // Lấy các phần tử DOM cần thiết
+        const loginLink = this.shadowRoot.getElementById('loginLink');
+        const modal = this.shadowRoot.getElementById('loginModal');
+        const closeBtn = this.shadowRoot.querySelector('.close');
+        const closeModalBtn = this.shadowRoot.getElementById('closeModal');
+        const loginBtn = this.shadowRoot.getElementById('loginBtn');
+        const forgotPassword = this.shadowRoot.getElementById('forgotPassword');
+        const usernameInput = this.shadowRoot.getElementById('username');
+        const passwordInput = this.shadowRoot.getElementById('password');
+        const usernameError = this.shadowRoot.getElementById('usernameError');
+        const passwordError = this.shadowRoot.getElementById('passwordError');
+        const logoutLink = this.shadowRoot.getElementById('logoutLink');
+        const accountDropdown = this.shadowRoot.getElementById('accountDropdown');
+
+        // Mở modal khi click đăng nhập
+        loginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'block';
+        });
+
+        // Đóng modal
+        const closeModal = () => {
+            modal.style.display = 'none';
+            // Reset form
+            usernameInput.value = '';
+            passwordInput.value = '';
+            usernameError.style.display = 'none';
+            passwordError.style.display = 'none';
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Đóng modal khi click bên ngoài
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
             }
         });
+
+        // Xử lý đăng nhập
+        loginBtn.addEventListener('click', () => {
+            let isValid = true;
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            // Validate
+            if (!username) {
+                usernameError.style.display = 'block';
+                isValid = false;
+            } else {
+                usernameError.style.display = 'none';
+            }
+
+            if (!password) {
+                passwordError.style.display = 'block';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none';
+            }
+
+            if (isValid) {
+                // Giả lập đăng nhập thành công
+                this.handleLoginSuccess(username);
+                closeModal();
+            }
+        });
+
+        // Xử lý quên mật khẩu
+        forgotPassword.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Chức năng quên mật khẩu sẽ được gửi đến email của bạn!');
+        });
+
+        // Xử lý đăng xuất
+        logoutLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.handleLogout();
+        });
+
+        // Cho phép submit form bằng phím Enter
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                loginBtn.click();
+            }
+        });
+
+        
     </script>
 </body>
 
