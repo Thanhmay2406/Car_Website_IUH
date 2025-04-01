@@ -1,90 +1,141 @@
+/* Reset mặc định */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Lexend_Deca", sans-serif;
 }
 
-@font-face {
-    font-family: "Lexend_Deca";
-    src: url(../../fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf);
-    font-weight: normal;
+body {
+    background-color: #f5f5f5;
 }
 
 .container {
     position: relative;
-    height: 84.375rem; /* 1350px -> rem */
-    font-family: "Lexend_Deca", sans-serif;
-    /* text-align: center; */
+    min-height: 100vh;
+    height: 96.875rem; /* 1550px -> rem */
 }
 
+/* Bố cục form */
 .form-container {
     background-image: url(../../images/test-drive-request/copy_of_di22_000056611.webp);
     background-size: cover;
-    /* background-position: center; */
+    background-position: center;
     background-repeat: no-repeat;
     display: flex;
-    height: 62.5rem; /* 1000px -> rem */
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 2rem 1rem;
+    padding-top: 6.25rem; /* 100px -> rem */
+    padding-bottom: 1.25rem; /* 20px -> rem */
+    margin-bottom: 1.875rem; /* 30px -> rem */
+}
+
+#left {
+    text-align: center;
+    margin-bottom: 1.5rem;
 }
 
 #left h1 {
     color: white;
+    font-size: 2rem;
 }
 
 #right {
     background-color: white;
-    width: 50rem; /* 800px -> rem */
-    height: 56.25rem; /* 900px -> rem */
-    margin-left: 3.125rem; /* 50px -> rem */
-    padding-top: 1.875rem; /* 30px -> rem */
-    padding-right: 1.875rem; /* 30px -> rem */
-    margin-top: 3.125rem; /* 50px -> rem */
+    width: 100%;
+    max-width: 37.5rem; /* 600px -> rem */
+    padding: 2rem;
+    border-radius: 0.625rem; /* 10px -> rem */
+    box-shadow: 0px 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
 }
 
-#right table {
-    background-color: white;
-    margin-left: 3.125rem; /* 50px -> rem */
-    width: 37.5rem; /* 600px -> rem */
-}
-
-#right ol {
-    margin-left: 4.375rem; /* 70px -> rem */
-    margin-top: 1.875rem; /* 30px -> rem */
-}
-
-#right ol li {
-    font-weight: lighter;
-    margin-bottom: 1.25rem; /* 20px -> rem */
-}
-
-#right table {
+/* Cấu trúc bảng form */
+table {
+    width: 100%;
     border-spacing: 0.625rem; /* 10px -> rem */
-    width: 90%;
 }
 
-#right table select {
-    width: 16.875rem; /* 270px -> rem */
-    height: 1.875rem; /* 30px -> rem */
+table td {
+    vertical-align: top;
 }
 
-#right table input {
-    width: 16.875rem; /* 270px -> rem */
-    height: 1.875rem; /* 30px -> rem */
+table select, table input, table textarea {
+    width: 100%;
+    height: 2.5rem; /* 40px -> rem */
+    padding: 0.625rem; /* 10px -> rem */
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.3125rem; /* 5px -> rem */
+    transition: border-color 0.3s;
 }
 
-#right textarea {
-    width: 16.875rem; /* 270px -> rem */
-    height: 3.125rem; /* 50px -> rem */
+table textarea {
+    height: 3.75rem; /* 60px -> rem */
+    resize: none;
 }
 
-#right a {
-    text-decoration: none;
-    padding: 0.625rem 1.25rem; /* 10px 20px -> rem */
-    color: white;
+table select:focus, table input:focus, table textarea:focus {
+    border-color: #3878d6;
+    outline: none;
+    box-shadow: 0 0 0.3125rem rgba(56, 120, 214, 0.5);
+}
+
+/* Lỗi validation */
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+    display: none;
+}
+
+input:invalid, select:invalid, textarea:invalid {
+    border-color: red;
+}
+
+input:valid, select:valid, textarea:valid {
+    border-color: green;
+}
+
+/* Nút Submit */
+#submitBtn {
+    width: 100%;
+    padding: 0.75rem; /* 12px -> rem */
     background-color: #3878d6;
+    color: white;
+    border: none;
+    border-radius: 0.3125rem; /* 5px -> rem */
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1.25rem; /* 20px -> rem */
+    transition: background-color 0.3s, transform 0.2s;
 }
 
-#right a:hover {
-    background-color: #4882d9;
+#submitBtn:hover {
+    background-color: #2c62b5;
+    transform: scale(1.05);
+}
+
+/* Chính sách bảo mật */
+.privacy-container {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem; /* 10px -> rem */
+    margin-top: 0.625rem; /* 10px -> rem */
+}
+
+.privacy-container input {
+    width: auto;
+    height: 1.25rem; /* 20px -> rem */
+}
+
+/* Responsive */
+@media (max-width: 48rem) { /* 768px -> rem */
+    .form-container {
+        padding: 1rem;
+    }
+    
+    #right {
+        width: 100%;
+        padding: 1.5rem;
+    }
 }

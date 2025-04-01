@@ -148,3 +148,24 @@
     color: white;
     background-color: black;
 }
+
+.car-list a {
+    text-decoration: none;
+    color: black;
+}
+
+.car-item {
+    width: 18.75rem;
+    text-align: left;
+    transition: transform 0.3s ease; /* Chỉ cần transition cho transform */
+    overflow: hidden; /* Ẩn phần ảnh vượt ra ngoài khi scale */
+}
+
+.car-item:hover {
+    transform: scale(1.05); /* Phóng to 5% khi hover */
+}
+
+.car-item img {
+    width: 100%;
+    height: auto;
+}

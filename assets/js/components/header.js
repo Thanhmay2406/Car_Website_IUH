@@ -2,12 +2,13 @@ class HeaderComponent extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
-        this.isLoggedIn = false; // Trạng thái đăng nhập
+        this.isLoggedIn = false;
     }
 
     connectedCallback() {
         this.render();
         this.setupEventListeners();
+        this.checkLoginState();
     }
 
     render() {
@@ -204,11 +205,13 @@ class HeaderComponent extends HTMLElement {
             
             .modal-content {
                 background-color: white;
-                margin: 10% auto;
+                margin: 5% auto;
                 padding: 2rem;
                 border-radius: 8px;
                 width: 400px;
                 max-width: 90%;
+                max-height: 80vh;
+                overflow-y: auto;
                 box-shadow: 0 4px 20px rgba(0,0,0,0.2);
                 animation: modalopen 0.3s;
                 position: relative;
@@ -334,7 +337,7 @@ class HeaderComponent extends HTMLElement {
             }
             
             .account-dropdown {
-                display: none; /* Ẩn ban đầu */
+                display: none;
                 position: absolute;
                 right: 0;
                 top: 100%;
@@ -347,7 +350,7 @@ class HeaderComponent extends HTMLElement {
             }
             
             .account-wrapper:hover .account-dropdown {
-                display: block; /* Hiển thị khi hover */
+                display: block;
             }
             
             .account-dropdown a {
@@ -366,6 +369,53 @@ class HeaderComponent extends HTMLElement {
             .account-wrapper {
                 position: relative;
             }
+            
+            /* Tab styles */
+            .tab-container {
+                display: flex;
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 1.5rem;
+            }
+            
+            .tab {
+                padding: 0.75rem 1.5rem;
+                cursor: pointer;
+                font-weight: 500;
+                color: #777;
+                border-bottom: 2px solid transparent;
+                transition: all 0.3s;
+            }
+            
+            .tab.active {
+                color: #3878d6;
+                border-bottom: 2px solid #3878d6;
+            }
+            
+            .tab-content {
+                display: none;
+            }
+            
+            .tab-content.active {
+                display: block;
+            }
+            
+            .switch-text {
+                text-align: center;
+                margin-top: 1rem;
+                font-size: 0.875rem;
+                color: #666;
+            }
+            
+            .switch-text a {
+                color: #3878d6;
+                text-decoration: none;
+                cursor: pointer;
+                font-weight: 500;
+            }
+            
+            .switch-text a:hover {
+                text-decoration: underline;
+            }
         </style>
 
         <header id="navbar">
@@ -379,29 +429,53 @@ class HeaderComponent extends HTMLElement {
                 <li class="dropdown">
                     <a href="">Tìm hiểu thêm</a>
                     <div class="dropdown-content">
+
+                        <div class="dropdown-section">
+                            <h4>BẢO HÀNH VÀ BẢO DƯỠNG</h4>
+                            <div class="dropdown-grid">
+                                <a href="">Chính sách bảo hành BMW</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-section">
+                            <h4>XE ĐIỆN</h4>
+                            <div class="dropdown-grid">
+                                <a href="">Charning</a>
+                                <a href="">Plug-in Hybrid</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-section">
+                            <h4>CÔNG NGHỆ VÀ ĐỔI MỚI</h4>
+                            <div class="dropdown-grid">
+                                <a href="">BMW Vision M NEXT</a>
+                                <a href="">BMW i Vision DEE</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-section">
+                            <h4>CHƯƠNG TRÌNH BÁN HÀNG DOANH NGHIỆP</h4>
+                            <div class="dropdown-grid">
+                                <a href="">Chương trình bán hàng doanh nghiệp 2024</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-section">
+                            <h4>THƯƠNG HIỆU BMW</h4>
+                            <div class="dropdown-grid">
+                                <a href="">Tìm hiểu BMW Asia</a>
+                                <a href="">BMW PressClub Asia</a>
+                            </div>
+                        </div>
+
                         <div class="dropdown-section">
                             <h4>ƯU ĐÃI ĐẶC BIỆT CHO KHÁCH HÀNG</h4>
                             <div class="dropdown-grid">
-                                <a href="">Hỗ trợ tài chính 0% lãi suất BMW 3 Series</a>
-                                <a href="">Cơ hội trúng chuyển du lịch Châu Âu</a>
-                                <a href="">Ưu đãi mừng xuân Át Tự</a>
                                 <a href="">Ưu đãi đặc biệt cho khách hàng thân thiết</a>
                             </div>
                         </div>
-                        <div class="dropdown-section">
-                            <h4>DỊCH VỤ DIGITAL VÀ ỨNG DỤNG</h4>
-                            <div class="dropdown-grid">
-                                <a href="">BMW IDrive</a>
-                                <a href="">BMW ConnectedDrive</a>
-                                <a href="">Chia khoá số BMW Digital Key</a>
-                                <a href="">Kết nối Apple CarPlay®</a>
-                                <a href="">Kết nối Android Auto™</a>
-                                <a href="">Bản đồ BMW</a>
-                                <a href="">BMW Teleservices</a>
-                                <a href="">Ứng dụng My BMW</a>
-                                <a href="">Trợ lý ảo cá nhân BMW</a>
-                            </div>
-                        </div>
+
+
                         <div class="dropdown-section">
                             <h4>DỊCH VỤ VÀ SỬA CHỮA</h4>
                             <a href="">Ưu đãi 18% giá phụ tùng chính hãng</a>
@@ -411,20 +485,16 @@ class HeaderComponent extends HTMLElement {
                             <a href="">Dịch vụ sửa chữa đồng sơn BMW</a>
                             <a href="">Hỗ trợ sự cố Roadside Assistance</a>
                         </div>
+                        
                     </div>
                 </li>
                 <li style="position: absolute; right: 6.25rem;" class="account-wrapper">
                     <a href="#" id="loginLink">Đăng nhập</a>
-                    <div class="account-dropdown" id="accountDropdown">
-                        <a href="#" id="profileLink">Hồ sơ của tôi</a>
-                        <a href="#" id="ordersLink">Đơn hàng</a>
-                        <a href="#" id="testDrivesLink">Lái thử đã đặt</a>
-                        <a href="#" id="logoutLink">Đăng xuất</a>
-                    </div>
                 </li>
                 <li style="position: absolute; right: 1.875rem;">
-                    <a href="https://www.google.com/maps/search/bmw/@9.7803663,105.1242079,9z/data=!3m1!4b1?hl=vi-VN&entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D">
-                        <svg style="width: 1.25rem; height: 1.25rem;" xmlns="http://www.w3.org/2000/svg"
+                    <a
+                        href="https://www.google.com/maps/search/bmw/@9.7803663,105.1242079,9z/data=!3m1!4b1?hl=vi-VN&entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D">
+                        <svg style="width: 1.25rem; height: 1.25rem; fill: currentColor;" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 384 512">
                             <path
                                 d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z" />
@@ -434,31 +504,84 @@ class HeaderComponent extends HTMLElement {
             </ul>
         </header>
         
-        <!-- Login Modal -->
-        <div id="loginModal" class="modal">
+        <!-- Auth Modal -->
+        <div id="authModal" class="modal">
             <div class="modal-content">
                 <span class="close">×</span>
-                <div class="modal-header">
-                    <h2>Đăng nhập</h2>
+                
+                <div class="tab-container">
+                    <div class="tab active" id="loginTab">Đăng nhập</div>
+                    <div class="tab" id="registerTab">Đăng ký</div>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="username">Email hoặc số điện thoại</label>
-                        <input type="text" id="username" placeholder="Nhập email hoặc số điện thoại">
-                        <div class="error-message" id="usernameError">Vui lòng nhập email hoặc số điện thoại</div>
+                
+                <!-- Login Form -->
+                <div class="tab-content active" id="loginForm">
+                    <div class="modal-header">
+                        <h2>Đăng nhập tài khoản</h2>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Mật khẩu</label>
-                        <input type="password" id="password" placeholder="Nhập mật khẩu">
-                        <div class="error-message" id="passwordError">Vui lòng nhập mật khẩu</div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="username">Email hoặc số điện thoại</label>
+                            <input type="text" id="username" placeholder="Nhập email hoặc số điện thoại">
+                            <div class="error-message" id="usernameError">Vui lòng nhập email hoặc số điện thoại</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mật khẩu</label>
+                            <input type="password" id="password" placeholder="Nhập mật khẩu">
+                            <div class="error-message" id="passwordError">Vui lòng nhập mật khẩu</div>
+                        </div>
+                        <div class="forgot-password">
+                            <a href="#" id="forgotPassword">Quên mật khẩu?</a>
+                        </div>
                     </div>
-                    <div class="forgot-password">
-                        <a href="#" id="forgotPassword">Quên mật khẩu?</a>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" id="closeModal">Đóng</button>
+                        <button class="btn btn-primary" id="loginBtn">Đăng nhập</button>
+                    </div>
+                    <div class="switch-text">
+                        Bạn chưa có tài khoản? <a id="switchToRegister">Đăng ký ngay</a>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" id="closeModal">Đóng</button>
-                    <button class="btn btn-primary" id="loginBtn">Đăng nhập</button>
+                
+                <!-- Register Form -->
+                <div class="tab-content" id="registerForm">
+                    <div class="modal-header">
+                        <h2>Tạo tài khoản mới</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="regName">Họ và tên</label>
+                            <input type="text" id="regName" placeholder="Nhập họ và tên">
+                            <div class="error-message" id="nameError">Vui lòng nhập họ và tên</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="regEmail">Email</label>
+                            <input type="email" id="regEmail" placeholder="Nhập email">
+                            <div class="error-message" id="emailError">Vui lòng nhập email hợp lệ</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="regPhone">Số điện thoại</label>
+                            <input type="tel" id="regPhone" placeholder="Nhập số điện thoại">
+                            <div class="error-message" id="phoneError">Vui lòng nhập số điện thoại</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="regPassword">Mật khẩu</label>
+                            <input type="password" id="regPassword" placeholder="Nhập mật khẩu (tối thiểu 6 ký tự)">
+                            <div class="error-message" id="regPasswordError">Mật khẩu phải có ít nhất 6 ký tự</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="regConfirmPassword">Nhập lại mật khẩu</label>
+                            <input type="password" id="regConfirmPassword" placeholder="Nhập lại mật khẩu">
+                            <div class="error-message" id="confirmPasswordError">Mật khẩu không khớp</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" id="closeRegisterModal">Đóng</button>
+                        <button class="btn btn-primary" id="registerBtn">Đăng ký</button>
+                    </div>
+                    <div class="switch-text">
+                        Bạn đã có tài khoản? <a id="switchToLogin">Đăng nhập ngay</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -472,35 +595,37 @@ class HeaderComponent extends HTMLElement {
 
         // Lấy các phần tử DOM cần thiết
         const loginLink = this.shadowRoot.getElementById('loginLink');
-        const modal = this.shadowRoot.getElementById('loginModal');
+        const modal = this.shadowRoot.getElementById('authModal');
         const closeBtn = this.shadowRoot.querySelector('.close');
         const closeModalBtn = this.shadowRoot.getElementById('closeModal');
+        const closeRegisterModalBtn = this.shadowRoot.getElementById('closeRegisterModal');
         const loginBtn = this.shadowRoot.getElementById('loginBtn');
+        const registerBtn = this.shadowRoot.getElementById('registerBtn');
         const forgotPassword = this.shadowRoot.getElementById('forgotPassword');
-        const usernameInput = this.shadowRoot.getElementById('username');
-        const passwordInput = this.shadowRoot.getElementById('password');
-        const usernameError = this.shadowRoot.getElementById('usernameError');
-        const passwordError = this.shadowRoot.getElementById('passwordError');
         const logoutLink = this.shadowRoot.getElementById('logoutLink');
+        const switchToRegister = this.shadowRoot.getElementById('switchToRegister');
+        const switchToLogin = this.shadowRoot.getElementById('switchToLogin');
+        const loginTab = this.shadowRoot.getElementById('loginTab');
+        const registerTab = this.shadowRoot.getElementById('registerTab');
+        const loginForm = this.shadowRoot.getElementById('loginForm');
+        const registerForm = this.shadowRoot.getElementById('registerForm');
 
         // Mở modal khi click đăng nhập
         loginLink.addEventListener('click', (e) => {
             e.preventDefault();
             modal.style.display = 'block';
+            this.showLoginForm();
         });
 
         // Đóng modal
         const closeModal = () => {
             modal.style.display = 'none';
-            // Reset form
-            usernameInput.value = '';
-            passwordInput.value = '';
-            usernameError.style.display = 'none';
-            passwordError.style.display = 'none';
+            this.resetForms();
         };
 
         closeBtn.addEventListener('click', closeModal);
         closeModalBtn.addEventListener('click', closeModal);
+        closeRegisterModalBtn.addEventListener('click', closeModal);
 
         // Đóng modal khi click bên ngoài
         window.addEventListener('click', (e) => {
@@ -509,32 +634,33 @@ class HeaderComponent extends HTMLElement {
             }
         });
 
+        // Chuyển đổi giữa form đăng nhập và đăng ký
+        switchToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showRegisterForm();
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showLoginForm();
+        });
+
+        loginTab.addEventListener('click', () => {
+            this.showLoginForm();
+        });
+
+        registerTab.addEventListener('click', () => {
+            this.showRegisterForm();
+        });
+
         // Xử lý đăng nhập
         loginBtn.addEventListener('click', () => {
-            let isValid = true;
-            const username = usernameInput.value.trim();
-            const password = passwordInput.value.trim();
+            this.validateLoginForm();
+        });
 
-            // Validate
-            if (!username) {
-                usernameError.style.display = 'block';
-                isValid = false;
-            } else {
-                usernameError.style.display = 'none';
-            }
-
-            if (!password) {
-                passwordError.style.display = 'block';
-                isValid = false;
-            } else {
-                passwordError.style.display = 'none';
-            }
-
-            if (isValid) {
-                // Giả lập đăng nhập thành công
-                this.handleLoginSuccess(username);
-                closeModal();
-            }
+        // Xử lý đăng ký
+        registerBtn.addEventListener('click', () => {
+            this.validateRegisterForm();
         });
 
         // Xử lý quên mật khẩu
@@ -550,17 +676,150 @@ class HeaderComponent extends HTMLElement {
         });
 
         // Cho phép submit form bằng phím Enter
-        passwordInput.addEventListener('keypress', (e) => {
+        this.shadowRoot.getElementById('password').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 loginBtn.click();
             }
         });
+
+        this.shadowRoot.getElementById('regConfirmPassword').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                registerBtn.click();
+            }
+        });
+    }
+
+    showLoginForm() {
+        this.shadowRoot.getElementById('loginForm').classList.add('active');
+        this.shadowRoot.getElementById('loginTab').classList.add('active');
+        this.shadowRoot.getElementById('registerForm').classList.remove('active');
+        this.shadowRoot.getElementById('registerTab').classList.remove('active');
+    }
+
+    showRegisterForm() {
+        this.shadowRoot.getElementById('registerForm').classList.add('active');
+        this.shadowRoot.getElementById('registerTab').classList.add('active');
+        this.shadowRoot.getElementById('loginForm').classList.remove('active');
+        this.shadowRoot.getElementById('loginTab').classList.remove('active');
+    }
+
+    resetForms() {
+        // Reset login form
+        this.shadowRoot.getElementById('username').value = '';
+        this.shadowRoot.getElementById('password').value = '';
+        this.shadowRoot.getElementById('usernameError').style.display = 'none';
+        this.shadowRoot.getElementById('passwordError').style.display = 'none';
+        
+        // Reset register form
+        this.shadowRoot.getElementById('regName').value = '';
+        this.shadowRoot.getElementById('regEmail').value = '';
+        this.shadowRoot.getElementById('regPhone').value = '';
+        this.shadowRoot.getElementById('regPassword').value = '';
+        this.shadowRoot.getElementById('regConfirmPassword').value = '';
+        this.shadowRoot.getElementById('nameError').style.display = 'none';
+        this.shadowRoot.getElementById('emailError').style.display = 'none';
+        this.shadowRoot.getElementById('phoneError').style.display = 'none';
+        this.shadowRoot.getElementById('regPasswordError').style.display = 'none';
+        this.shadowRoot.getElementById('confirmPasswordError').style.display = 'none';
+    }
+
+    validateLoginForm() {
+        let isValid = true;
+        const username = this.shadowRoot.getElementById('username').value.trim();
+        const password = this.shadowRoot.getElementById('password').value.trim();
+
+        // Validate
+        if (!username) {
+            this.shadowRoot.getElementById('usernameError').style.display = 'block';
+            isValid = false;
+        } else {
+            this.shadowRoot.getElementById('usernameError').style.display = 'none';
+        }
+
+        if (!password) {
+            this.shadowRoot.getElementById('passwordError').style.display = 'block';
+            isValid = false;
+        } else {
+            this.shadowRoot.getElementById('passwordError').style.display = 'none';
+        }
+
+        if (isValid) {
+            // Thực hiện xử lý đăng nhập thực tế ở đây
+            console.log('Đăng nhập với:', { username, password });
+        }
+
+        return isValid;
+    }
+
+    validateRegisterForm() {
+        let isValid = true;
+        const name = this.shadowRoot.getElementById('regName').value.trim();
+        const email = this.shadowRoot.getElementById('regEmail').value.trim();
+        const phone = this.shadowRoot.getElementById('regPhone').value.trim();
+        const password = this.shadowRoot.getElementById('regPassword').value.trim();
+        const confirmPassword = this.shadowRoot.getElementById('regConfirmPassword').value.trim();
+
+        // Validate name
+        if (!name) {
+            this.shadowRoot.getElementById('nameError').style.display = 'block';
+            isValid = false;
+        } else {
+            this.shadowRoot.getElementById('nameError').style.display = 'none';
+        }
+
+        // Validate email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+            this.shadowRoot.getElementById('emailError').style.display = 'block';
+            isValid = false;
+        } else {
+            this.shadowRoot.getElementById('emailError').style.display = 'none';
+        }
+
+        // Validate phone
+        const phoneRegex = /^\d{10,15}$/;
+        if (!phone || !phoneRegex.test(phone)) {
+            this.shadowRoot.getElementById('phoneError').style.display = 'block';
+            isValid = false;
+        } else {
+            this.shadowRoot.getElementById('phoneError').style.display = 'none';
+        }
+
+        // Validate password
+        if (!password || password.length < 6) {
+            this.shadowRoot.getElementById('regPasswordError').style.display = 'block';
+            isValid = false;
+        } else {
+            this.shadowRoot.getElementById('regPasswordError').style.display = 'none';
+        }
+
+        // Validate confirm password
+        if (password !== confirmPassword) {
+            this.shadowRoot.getElementById('confirmPasswordError').style.display = 'block';
+            isValid = false;
+        } else {
+            this.shadowRoot.getElementById('confirmPasswordError').style.display = 'none';
+        }
+
+        if (isValid) {
+            // Thực hiện xử lý đăng ký thực tế ở đây
+            console.log('Đăng ký với:', { name, email, phone, password });
+        }
+
+        return isValid;
+    }
+
+    checkLoginState() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        if (isLoggedIn) {
+            this.updateLoginState(true);
+        }
     }
 
     handleLoginSuccess(username) {
         this.isLoggedIn = true;
         const loginLink = this.shadowRoot.getElementById('loginLink');
-        loginLink.textContent = username; // Hoặc có thể hiển thị "Tài khoản"
+        loginLink.textContent = username.split(' ')[0] || 'Tài khoản';
 
         // Lưu trạng thái đăng nhập vào localStorage
         localStorage.setItem('isLoggedIn', 'true');
@@ -585,10 +844,12 @@ class HeaderComponent extends HTMLElement {
 
     updateLoginState(isLoggedIn) {
         const loginLink = this.shadowRoot.getElementById('loginLink');
+        const accountDropdown = this.shadowRoot.getElementById('accountDropdown');
 
         if (isLoggedIn) {
             const username = localStorage.getItem('username') || 'Tài khoản';
-            loginLink.textContent = username;
+            loginLink.textContent = username.split(' ')[0] || username;
+            accountDropdown.style.display = 'none';
         } else {
             loginLink.textContent = 'Đăng nhập';
         }
