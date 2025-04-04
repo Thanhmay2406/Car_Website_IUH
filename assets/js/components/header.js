@@ -5,10 +5,22 @@ class HeaderComponent extends HTMLElement {
         this.isLoggedIn = false;
     }
 
+    static get observedAttributes() {
+        return ['always-scrolled'];
+    }
+
     connectedCallback() {
         this.render();
         this.setupEventListeners();
         this.checkLoginState();
+        // Kiểm tra và áp dụng trạng thái "scrolled" nếu thuộc tính tồn tại
+        if (this.hasAttribute('always-scrolled')) {
+            const header = this.shadowRoot.querySelector("header");
+            if (header) {
+                header.classList.add("scrolled");
+                window.removeEventListener("scroll", this.handleScroll); // Ngừng lắng nghe sự kiện cuộn
+            }
+        }
     }
 
     render() {
@@ -99,7 +111,7 @@ class HeaderComponent extends HTMLElement {
 
             .scrolled {
                 background-color: white !important;
-                box-shadow: 0px 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+                box-shadow: 0px 0.125rem 0.625rem rgba(0, 0, 0, 0.1) !important;
             }
 
             .scrolled a {
@@ -425,7 +437,7 @@ class HeaderComponent extends HTMLElement {
                 <li><a href="../index.html">Trang chủ</a></li>
                 <li><a href="">Mẫu xe</a></li>
                 <li><a href="/pages/test-drive.html">Đặt hẹn lái xe thử</a></li>
-                <li><a href="">Hệ thống phân phối</a></li>
+                <li><a href="../../pages/find-us.html">Hệ thống phân phối</a></li>
                 <li class="dropdown">
                     <a href="">Tìm hiểu thêm</a>
                     <div class="dropdown-content">
@@ -866,6 +878,21 @@ class HeaderComponent extends HTMLElement {
 
     disconnectedCallback() {
         window.removeEventListener("scroll", this.handleScroll);
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'always-scrolled') {
+            const header = this.shadowRoot.querySelector("header");
+            if (header) {  // Kiểm tra header không null
+                if (this.hasAttribute('always-scrolled')) {  // Thuộc tính tồn tại
+                    header.classList.add("scrolled");
+                    window.removeEventListener("scroll", this.handleScroll); // Ngừng lắng nghe sự kiện cuộn
+                } else {  // Thuộc tính bị xóa
+                    header.classList.remove("scrolled");
+                    window.addEventListener("scroll", this.handleScroll); // Bật lại lắng nghe sự kiện cuộn
+                }
+            }
+        }
     }
 }
 
