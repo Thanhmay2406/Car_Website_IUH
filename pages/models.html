@@ -1,23 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="../assets/images/logo/logo.png" type="image/x-icon">
+<script src="../assets/js/components/headermodels.js"></script>
+<script src="../assets/js/components/footer.js"></script>
+<link rel="stylesheet" href="../assets/css/models/models.css">
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+<title>Mẫu xe</title>
+<style>
+    /* Các style hiện tại của header */
+    @font-face {
+        font-family: "Lexend_Deca";
+        src: url(../assets/fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf);
+        font-weight: normal;
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home-BMW</title>
-    <script src="assets/js/components/footer.js"></script>
-    <script src="assets/js/components/header.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <!-- <link rel="stylesheet" href="assets/css/models/models.css"> -->
-    <link rel="shortcut icon" href="assets/images/logo/logo.png" type="image/x-icon">
-</head>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Lexend_Deca", sans-serif;
+    }
+</style>
 
 <body>
-    <div class="container">
+    <header>
         <header-component></header-component>
-        <div id="intro">
-            <a href="">Đăng ký lái thử</a>
-        </div>
+    </header>
+    <div class="container">
         <div class="content">
             <div class="tabs">
                 <a class="tab-btn active" id="0" data-category="BMW">BMW</a>
@@ -136,51 +145,110 @@
                 </a>
             </div>
         </div>
-        <div class="utilities">
-            <p>TIỆN ÍCH BMW</p>
-            <h2>CHỌN DỊCH VỤ BMW</h2>
-            <div class="utilities-list">
-                <div class="extend-item">
-                    <img src="assets/images/homepage/microsoftteams_image_8_.webp" alt="">
-                    <p>Đặt hẹn dịch vụ BMW</p>
-                    <button>Đặt Ngay</button>
-                </div>
-                <div class="extend-item" style="margin-left: 12.5rem; margin-right: 12.5rem;">
-                    <img src="assets/images/homepage/microsoftteams_image_7_.webp" alt="">
-                    <p>Đặt lịch lái thử</p>
-                    <button>Đặt Lịch Ngay</button>
-                </div>
-                <div class="extend-item">
-                    <img src="assets/images/homepage/microsoftteams_image_9_.webp" alt="">
-                    <p>Đăng ký nhận ưu đãi</p>
-                    <button>Đăng Ký Ngay</button>
-                </div>
-            </div>
-        </div>
-        <div class="slide-3">
-            <div style="color: white; margin-left: 3.125rem;">
-                <p>THE FIRST-EVER XM</p>
-                <h1>BMW XM</h1>
-                <h1 style="margin-bottom: 1.875rem;">THẾ HỆ ĐẦU TIÊN</h1>
-                <a href="">Khám Phá Ngay</a>
-            </div>
-        </div>
-        <div class="slide-4">
-            <div id="left">
-                <img src="assets/images/homepage/03.webp" alt="">
-            </div>
-            <div id="right">
-                <p style="margin-bottom: 0.625rem;">DỊCH VỤ DIGITAL VÀ ỨNG DỤNG</p>
-                <h2 style="margin-bottom: 0.625rem;">BMW CONNECTED DRIVE</h2>
-                <p style="margin-bottom: 3.125rem;">Các tính năng và dịch vụ có trên BMW ConnectedDrive đều là các tính
-                    năng hữu ích đối với người dùng. Những tính năng thông minh và tiên tiến sẽ giúp cho cuộc sống của
-                    bạn trở nên dễ dàng hơn.</p>
-                <a href="">Tìm hiểu thêm</a>
-            </div>
-        </div>
-        <footer-component></footer-component>
     </div>
-    <script src="assets/js/script.js"></script>
-</body>
 
-</html>
+    <footer>
+        <footer-component></footer-component>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tabButtons = document.querySelectorAll(".tab-btn");
+            const subTabButtons = document.querySelectorAll(".sub-tab-btn");
+            const carItems = document.querySelectorAll(".car-item");
+
+            function filterSubTabs(selectedCategory) {
+                subTabButtons.forEach(btn => {
+                    if (btn.dataset.type === "M") {
+                        btn.classList.add("un-active");
+                    }
+                    else if (btn.dataset.type === "i") {
+                        btn.classList.add("un-active");
+                    }
+                    else {
+                        btn.classList.remove("un-active")
+                    }
+                });
+                if (selectedCategory === "BMWM") {
+                    subTabButtons.forEach(btn => {
+                        if (btn.dataset.type === "M") {
+                            btn.classList.remove("un-active");
+                            btn.classList.add("sub-active")
+                        }
+                        else {
+                            btn.classList.add("un-active")
+                        }
+                    });
+                }
+                else if (selectedCategory === "BMWi") {
+                    subTabButtons.forEach(btn => {
+                        if (btn.dataset.type === "i") {
+                            btn.classList.remove("un-active");
+                            btn.classList.add("sub-active")
+                        }
+                        else {
+                            btn.classList.add("un-active")
+                        }
+                    });
+                }
+            }
+            function filterCars() {
+                const activeCategory = document.querySelector(".tab-btn.active").dataset.category;
+                const activeType = document.querySelector(".sub-tab-btn.sub-active").dataset.type;
+                const subTabButtonM = document.querySelectorAll(".tab-btn[M]");
+                if (activeCategory === "BMWM") {
+                    carItems.forEach(car => {
+                        if (car.dataset.type === "M") {
+                            car.style.display = "block";
+                        } else {
+                            car.style.display = "none";
+                            car.style.marginLeft = "0";
+                        }
+                    });
+                }
+                else if (activeCategory === "BMWi") {
+                    carItems.forEach(car => {
+                        if (car.dataset.type === "i") {
+                            car.style.marginLeft = "2.5rem";
+                            car.style.display = "block";
+                        } else {
+
+                            car.style.display = "none";
+                        }
+                    });
+                }
+                else {
+                    carItems.forEach(car => {
+                        const carCategory = car.dataset.category;
+                        const carType = car.dataset.type;
+
+                        if (carCategory === activeCategory && carType === activeType) {
+                            car.style.marginLeft = "2.5rem";
+                            car.style.display = "block";
+                        } else {
+                            car.style.display = "none";
+                        }
+                    });
+                }
+
+            }
+
+            tabButtons.forEach(a => {
+                a.addEventListener("click", function () {
+                    tabButtons.forEach(btn => btn.classList.remove("active"));
+                    this.classList.add("active");
+                    filterSubTabs(this.dataset.category)
+                    filterCars();
+                });
+            });
+            subTabButtons.forEach(a => {
+                a.addEventListener("click", function () {
+                    subTabButtons.forEach(btn => btn.classList.remove("sub-active"));
+                    this.classList.add("sub-active");
+                    filterCars();
+                });
+            });
+
+            filterCars(); // Gọi lần đầu để hiển thị danh sách mặc định
+        });
+    </script>
+</body>

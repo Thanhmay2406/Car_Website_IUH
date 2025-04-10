@@ -5,17 +5,10 @@ class HeaderComponent extends HTMLElement {
         this.isLoggedIn = false;
     }
 
-    static get observedAttributes() {
-        return ['always-scrolled'];
-    }
-
     connectedCallback() {
         this.render();
         this.setupEventListeners();
         this.checkLoginState();
-        if (this.hasAttribute('always-scrolled')) {
-            this.attributeChangedCallback('always-scrolled', null, '');
-        }
     }
 
     render() {
@@ -27,7 +20,12 @@ class HeaderComponent extends HTMLElement {
                 src: url(../../fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf);
                 font-weight: normal;
             }
-
+             * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Lexend_Deca", sans-serif;
+            }
             #navbar {
                 display: flex;
             }
@@ -36,7 +34,7 @@ class HeaderComponent extends HTMLElement {
                 z-index: 1000;
                 padding: 0;
                 margin: 0;
-                position: fixed;
+                position: relative;
                 width: 100%;
                 top: 0;
                 left: 0;
@@ -74,7 +72,7 @@ class HeaderComponent extends HTMLElement {
                 padding: 1.25rem 0.625rem;
                 text-decoration: none;
                 height: 4.0625rem;
-                color: white;
+                color:black;
                 transition: color 0.3s ease;
                 position: relative;
                 display: flex;
@@ -95,7 +93,7 @@ class HeaderComponent extends HTMLElement {
             ul li.dropdown a::after {
                 display: none;
             }
-
+            
             ul li a:hover {
                 color: #3878d6;
             }
@@ -106,7 +104,7 @@ class HeaderComponent extends HTMLElement {
 
             .scrolled {
                 background-color: white !important;
-                box-shadow: 0px 0.125rem 0.625rem rgba(0, 0, 0, 0.1) !important;
+                box-shadow: 0px 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
             }
 
             .scrolled a {
@@ -424,15 +422,14 @@ class HeaderComponent extends HTMLElement {
                 text-decoration: underline;
             }
         </style>
-
         <header id="navbar">
             <img style="width: 3.125rem; height: 3.125rem; margin-left: 1.25rem; margin-top: 0.625rem;"
-                src="../assets/images/logo/logo.png" alt="">
+                src="../../assets/images/logo/logo.png" alt="">
             <ul style="margin-left: 0.625rem; position: relative;">
-                <li><a href="../index.html">Trang chủ</a></li>
-                <li><a href="../../pages/models.html">Mẫu xe</a></li>
+                <li><a href="../../index.html">Trang chủ</a></li>
+                <li><a href="../models.html" style="font-weight: Bold;" id="br">Mẫu xe</a></li>
                 <li><a href="/pages/test-drive.html">Đặt hẹn lái xe thử</a></li>
-                <li><a href="../../pages/find-us.html">Hệ thống phân phối</a></li>
+                <li><a href="">Hệ thống phân phối</a></li>
                 <li class="dropdown">
                     <a href="">Tìm hiểu thêm</a>
                     <div class="dropdown-content">
@@ -873,21 +870,6 @@ class HeaderComponent extends HTMLElement {
 
     disconnectedCallback() {
         window.removeEventListener("scroll", this.handleScroll);
-    }
-
-    attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'always-scrolled') {
-            const header = this.shadowRoot.querySelector("header");
-            if (header) {  // Thêm kiểm tra null
-                if (newValue !== null) {  // Kiểm tra đúng cách
-                    header.classList.add("scrolled");
-                    window.removeEventListener("scroll", this.handleScroll);
-                } else {
-                    header.classList.remove("scrolled");
-                    window.addEventListener("scroll", this.handleScroll);
-                }
-            }
-        }
     }
 }
 
