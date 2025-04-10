@@ -6,17 +6,17 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: flex-start; /* Điều chỉnh để nội dung không bị căn giữa theo chiều dọc */
     height: 100vh;
     margin: 0;
-    background-image: url(../../images/login/01.jpg);
+    /* background-image: url(../../images/login/01.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%; /* Đảm bảo hình nền bao phủ toàn bộ trang */
-    background-attachment: fixed; /* Giữ hình nền cố định khi cuộn */
-    background-position: center;
+    /* background-attachment: fixed; /* Giữ hình nền cố định khi cuộn */
+    /*background-position: center; */
 }
 
 .contain {

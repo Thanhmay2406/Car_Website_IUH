@@ -427,7 +427,7 @@ class HeaderComponent extends HTMLElement {
                 src="../../assets/images/logo/logo.png" alt="">
             <ul style="margin-left: 0.625rem; position: relative;">
                 <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="../pages/models.html" style="font-weight: Bold;" id="br">Mẫu xe</a></li>
+                <li><a href="../pages/models.html" id="br">Mẫu xe</a></li>
                 <li><a href="/pages/test-drive.html">Đặt hẹn lái xe thử</a></li>
                 <li><a href="">Hệ thống phân phối</a></li>
                 <li class="dropdown">
