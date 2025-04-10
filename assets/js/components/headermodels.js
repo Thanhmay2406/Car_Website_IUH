@@ -429,7 +429,7 @@ class HeaderComponent extends HTMLElement {
                 <li><a href="../../index.html">Trang chủ</a></li>
                 <li><a href="../pages/models.html" id="br">Mẫu xe</a></li>
                 <li><a href="/pages/test-drive.html">Đặt hẹn lái xe thử</a></li>
-                <li><a href="">Hệ thống phân phối</a></li>
+                <li><a href="/pages/find-us.html">Hệ thống phân phối</a></li>
                 <li class="dropdown">
                     <a href="">Tìm hiểu thêm</a>
                     <div class="dropdown-content">
@@ -452,7 +452,7 @@ class HeaderComponent extends HTMLElement {
                         <div class="dropdown-section">
                             <h4>CÔNG NGHỆ VÀ ĐỔI MỚI</h4>
                             <div class="dropdown-grid">
-                                <a href="">BMW Vision M NEXT</a>
+                                <a href="/pages/technology-innovation/bmw-vision-m-next.html">BMW Vision M NEXT</a>
                                 <a href="">BMW i Vision DEE</a>
                             </div>
                         </div>
