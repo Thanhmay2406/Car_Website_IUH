@@ -460,7 +460,7 @@ class HeaderComponent extends HTMLElement {
                         <div class="dropdown-section">
                             <h4>CHƯƠNG TRÌNH BÁN HÀNG DOANH NGHIỆP</h4>
                             <div class="dropdown-grid">
-                                <a href="">Chương trình bán hàng doanh nghiệp 2024</a>
+                                <a href="/pages/corporate-sales-overview.html">Chương trình bán hàng doanh nghiệp 2024</a>
                             </div>
                         </div>
 
