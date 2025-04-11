@@ -489,7 +489,7 @@ class HeaderComponent extends HTMLElement {
                             <a href="">Khám phá Dịch vụ BMW</a>
                             <a href="">Chăm sóc chủ động Proactive Care</a>
                             <a href="">Bảo dưỡng trọn gói BSI</a>
-                            <a href="">Dịch vụ sửa chữa đồng sơn BMW</a>
+                            <a href="/pages/bmw-repair-and-care-overview.html">Dịch vụ sửa chữa đồng sơn BMW</a>
                             <a href="/pages/bmw-roadside-assistance.html">Hỗ trợ sự cố Roadside Assistance</a>
                         </div>
                         
