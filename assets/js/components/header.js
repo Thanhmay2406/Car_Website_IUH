@@ -456,7 +456,7 @@ class HeaderComponent extends HTMLElement {
                             <h4>CÔNG NGHỆ VÀ ĐỔI MỚI</h4>
                             <div class="dropdown-grid">
                                 <a href="../../../pages/technology-innovation/bmw-vision-m-next.html">BMW Vision M NEXT</a>
-                                <a href="">BMW i Vision DEE</a>
+                                <a href="/pages/bmw-vision-ivisiondee-2023.html">BMW i Vision DEE</a>
                             </div>
                         </div>
 
