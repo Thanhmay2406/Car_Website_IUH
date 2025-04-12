@@ -1,0 +1,695 @@
+/* === Biến CSS === */
+:root {
+    --font-primary: "Lexend_Deca", Arial, sans-serif; /* Font chính */
+    --font-secondary: Arial, sans-serif; /* Font phụ nếu cần */
+    --color-text-primary: #333;
+    --color-text-secondary: #444;
+    --color-text-light: #f0f0f0;
+    --color-text-white: #fff;
+    --color-primary: #1c69d4; /* Màu xanh dương chính */
+    --color-primary-dark: #1654a9;
+    --color-background-light: #f9f9f9;
+    --color-background-medium: #f0f0f0;
+    --color-background-white: #fff;
+    --color-border: #ddd;
+    --max-width-content: 1200px;
+    --padding-horizontal: 5%; /* Có thể dùng giá trị cố định như 15px hoặc 20px */
+    --header-height: 70px; /* Chiều cao header (Cần điều chỉnh nếu header thực tế khác) */
+    --secondary-nav-height: 50px; /* Chiều cao nav phụ */
+}
+
+/* === Reset cơ bản & Font === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Cuộn trang mượt hơn */
+    scroll-padding-top: calc(var(--header-height) + var(--secondary-nav-height) + 10px); /* Adjust scroll padding for sticky nav */
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--color-text-primary);
+    background-color: var(--color-background-white);
+    line-height: 1.6;
+    font-size: 16px; /* Đặt font-size cơ bản */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    color: var(--color-primary); /* Add subtle hover effect for links */
+}
+
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* === Layout Wrappers === */
+.page-wrapper {
+    position: relative;
+    height:480rem;
+    font-family: "Lexend_Deca", sans-serif;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: var(--max-width-content);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(15px, var(--padding-horizontal), 50px);
+    padding-right: clamp(15px, var(--padding-horizontal), 50px);
+}
+
+/* === Component Placeholder Styles (Nếu JS chưa chạy) === */
+header-component, footer-component {
+    display: block; /* Đảm bảo chiếm không gian */
+    min-height: var(--header-height); /* Chiều cao tối thiểu để thấy */
+    background-color: #eee; /* Màu nền tạm */
+    text-align: center;
+    padding: 10px;
+    font-style: italic;
+    color: #888;
+    display: flex; /* Use flex for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+}
+header-component::before {
+    content: 'Header Loading... (Requires header.js)';
+}
+footer-component::before {
+    content: 'Footer Loading... (Requires footer.js)';
+    min-height: 100px; /* Give footer more space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* === Hero Section === */
+.hero-section {
+    /* Note: Ensure image path is correct */
+    background-image: url('../../images/models/img-bmw-ix3/banner_image_new.webp');
+    background-size: cover;
+    background-position: center;
+    min-height: 600px;
+    height: 85vh; /* Relative to viewport height */
+    max-height: 800px; /* Optional: prevent it becoming too large */
+    color: var(--color-text-white);
+    display: flex;
+    align-items: flex-end; /* Align content to bottom */
+    padding-bottom: 80px; /* Add padding at the bottom */
+    position: relative; /* Để lớp phủ nếu cần */
+}
+/* Optional: Lớp phủ tối cho hero để chữ nổi bật hơn */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)); /* Gradient overlay */
+    z-index: 1;
+}
+
+.hero-section .hero-content {
+    position: relative; /* Đặt lên trên lớp phủ */
+    z-index: 2;
+    width: 100%;
+    max-width: var(--max-width-content);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: clamp(15px, var(--padding-horizontal), 50px);
+    padding-right: clamp(15px, var(--padding-horizontal), 50px);
+    /* max-width: 50%; Removed this constraint */
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5em, 5vw, 3.5em); /* Larger H1 */
+    margin-bottom: 0px;
+    font-weight: bold; /* Bolder */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Add text shadow */
+}
+
+.hero-content h2 {
+    font-size: clamp(1.8em, 3.5vw, 2.5em); /* Larger H2 */
+    margin-bottom: 30px;
+    font-weight: lighter; /* Lighter */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Add text shadow */
+}
+
+/* === Buttons === */
+.btn {
+    padding: 12px 25px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: inherit;
+    transition: all 0.3s ease; /* Smoother transition */
+    display: inline-block;
+    text-align: center;
+    font-weight: bold;
+    margin: 5px; /* Add small margin */
+}
+
+.hero-buttons .btn {
+    margin-right: 15px;
+    margin-bottom: 40px;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+    border-color: var(--color-primary);
+}
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-2px); /* Add slight lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-text-white);
+    border: 1px solid var(--color-text-white);
+}
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Nút Secondary trên nền sáng */
+.cta-buttons .btn-secondary.showroom-button {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.cta-buttons .btn-secondary.showroom-button:hover {
+    background-color: rgba(28, 105, 212, 0.1);
+    color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+}
+
+/* Nút dạng link (nếu cần) */
+.btn-link {
+    background-color: transparent;
+    color: var(--color-primary);
+    padding: 10px 0; /* Adjust padding */
+    border: none;
+    font-weight: bold;
+}
+.btn-link:hover {
+    background-color: transparent;
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+.hero-info {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    margin-top: 20px;
+    gap: 20px 40px; /* Add gap between items */
+}
+
+.info-item span {
+    display: block;
+    font-size: 0.9em;
+    color: #ddd; /* Lighter text */
+    margin-bottom: 5px;
+}
+.info-item strong {
+    font-size: 1.2em; /* Slightly larger */
+    font-weight: bold;
+}
+
+/* === Secondary Navigation === */
+.secondary-nav {
+    background-color: var(--color-background-white); /* Changed background */
+    height: var(--secondary-nav-height);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    /* Adjust top based on whether the main header is also sticky */
+    top: 0; /* Assuming main header is NOT sticky */
+    /* top: var(--header-height); */ /* Use this if main header IS sticky */
+    z-index: 998; /* Below sticky button */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Add subtle shadow */
+}
+.secondary-nav .content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center nav items */
+    height: 100%;
+}
+
+.secondary-nav ul {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 30px; /* Use gap for spacing */
+}
+
+.secondary-nav ul li {
+    /* margin-right: 30px; Replaced by gap */
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.secondary-nav ul li a {
+    color: var(--color-text-secondary); /* Slightly dimmer color */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+    font-size: 0.9em;
+    padding: 0 5px; /* Add horizontal padding */
+}
+
+.secondary-nav ul li a:hover,
+.secondary-nav ul li a.active { /* Thêm class active nếu cần */
+    border-bottom-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* === Sticky Button === */
+.btn-sticky {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    z-index: 1000;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.btn-sticky:hover {
+    background-color: var(--color-primary-dark);
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* === Section Styles === */
+section {
+    padding-top: clamp(40px, 6vw, 80px); /* Responsive padding */
+    padding-bottom: clamp(40px, 6vw, 80px);
+    overflow: hidden; /* Prevent content overflow issues */
+}
+
+/* Tiêu đề chính dùng H1 trong section (Thường chỉ có 1 H1/trang trong hero) */
+/* Nên dùng H2 cho tiêu đề các section */
+section > .content-wrapper > h1 { /* Áp dụng cho H1 bên trong content-wrapper của section */
+    font-size: clamp(1.8em, 3.5vw, 2.4em); /* Slightly larger */
+    font-weight: bold;
+    color: var(--color-text-primary);
+    margin-bottom: 20px;
+    text-align: center;
+}
+/* Tiêu đề Section dùng H2 */
+section > .content-wrapper > h2 {
+    font-size: clamp(1.6em, 3vw, 2.2em); /* Slightly larger */
+    font-weight: bold;
+    color: var(--color-text-primary);
+    margin-bottom: 40px; /* Increased margin */
+    text-align: center; /* Căn giữa tiêu đề section */
+}
+/* Tiêu đề phụ dùng H2 bên trong các cấu trúc con (VD: image-content-pair) */
+section .content-half h2,
+section .text-section h2 { /* Target specific H2s */
+    font-size: clamp(1.4em, 2.5vw, 1.8em); /* Slightly larger */
+    text-align: left; /* Thường căn trái */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+/* Tiêu đề H3 trong các item (VD: feature-item, cot) */
+section h3 {
+    font-size: clamp(1.1em, 2vw, 1.3em);
+    font-weight: bold;
+    color: var(--color-text-primary);
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+section p {
+    margin-bottom: 1em;
+    color: var(--color-text-secondary);
+}
+section p.subtitle {
+    font-size: 1.05em; /* Slightly larger subtitle */
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px; /* Increased margin */
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+}
+section p.disclaimer {
+    font-size: 0.85em;
+    text-align: center;
+    margin-top: 40px;
+    color: #777;
+}
+
+section ul {
+    padding-left: 20px; /* Keep default padding */
+    margin-bottom: 1em;
+}
+section ul li {
+    margin-bottom: 0.8em;
+    list-style: disc;
+    color: var(--color-text-secondary);
+}
+/* Specific list styling in text sections */
+.text-section ul {
+    padding-left: 0; /* Remove padding if using custom bullets or layout */
+    list-style: none;
+}
+.text-section ul li {
+    margin-bottom: 1em;
+    padding-left: 25px; /* Indent text */
+    position: relative;
+    font-size: 0.95em;
+    list-style: none; /* Ensure disc is removed */
+}
+.text-section ul li::before {
+    content: '✔'; /* Checkmark icon */
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+
+/* --- Car Description Section --- */
+.car-description-section p {
+    font-size: 1em; /* Slightly larger */
+    line-height: 1.7;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* --- Driver Assist Section (Thiết kế mẫu xe...) --- */
+.driver-assist-section {
+    background-color: var(--color-background-light); /* Add light background */
+}
+.driver-assist-section .image-text-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px; /* Increased gap */
+    align-items: center;
+}
+.driver-assist-section .image-section {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px; /* Limit image width */
+    margin: 0 auto; /* Center if it wraps */
+}
+.driver-assist-section .image-section img {
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* Add shadow */
+}
+.driver-assist-section .text-section {
+    flex: 1.2; /* Give text slightly more space */
+    min-width: 300px;
+}
+/* Style for H2 inside .text-section already defined */
+
+
+/* --- Features Grid Section (Hệ truyền động, Công nghệ...) --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.feature-item {
+    background-color: var(--color-background-white);
+    padding: 25px; /* Increased padding */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+
+.feature-item img {
+    margin-bottom: 20px; /* Increased margin */
+    border-radius: 5px;
+}
+
+.feature-item h2 { /* Should be H3 in HTML */
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-align: left;
+    font-weight: bold;
+}
+.feature-item p {
+    font-size: 0.95em;
+    color: var(--color-text-secondary);
+}
+
+/* --- Image Content Pair Layout (Quãng đường, Tài chính, Tư vấn...) --- */
+.image-content-pair {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 50px; /* Increased gap */
+}
+.image-content-pair .image-half,
+.image-content-pair .content-half {
+    flex: 1;
+    min-width: 300px;
+}
+.image-content-pair .image-half img {
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* Add shadow */
+}
+/* Style H2 in .content-half already defined */
+
+.image-content-pair .content-half ul {
+    padding-left: 0;
+    list-style: none;
+}
+.image-content-pair .content-half li {
+    list-style: none; /* Ensure no default bullets */
+    margin-bottom: 0.8em; /* Increased spacing */
+    font-size: 0.95em;
+    padding-left: 25px;
+    position: relative;
+}
+.image-content-pair .content-half li::before {
+     content: '›'; /* Arrow icon */
+    position: absolute;
+    left: 0;
+    top: -2px; /* Adjust vertical position */
+    color: var(--color-primary);
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.image-content-pair .cta-button { /* Style for div chứa nút */
+    margin-top: 30px; /* Increased Khoảng cách trên nút */
+    text-align: left;
+}
+
+/* Đảo ngược thứ tự */
+.image-content-pair.reverse {
+    flex-direction: row-reverse;
+}
+
+/* --- Nội thất/Ngoại thất Section (Cả 2 section dùng chung layout 3 cột) --- */
+.noi-that-an-tuong, /* Áp dụng chung style for Exterior */
+.noi-that-noi-bat { /* Applying shared style for Interior */
+    background-color: var(--color-background-light);
+}
+/* Style H2 in these sections already defined */
+.cot-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.cot {
+    background-color: var(--color-background-white);
+    padding: 20px;
+    text-align: left;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.cot:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+
+.cot img {
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.cot h3 {
+    font-size: 1.2em; /* Slightly larger */
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--color-text-primary); /* Use primary text color */
+}
+
+.cot p {
+    font-size: 0.95em; /* Slightly larger */
+    line-height: 1.6;
+    color: var(--color-text-secondary); /* Use secondary text color */
+    flex-grow: 1; /* Giúp các cột có chiều cao đều nhau nếu nội dung khác nhau */
+}
+
+/* === Section Thông số Kỹ thuật === */
+.thong-so-ky-thuat {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: var(--color-background-white);
+}
+/* Style H2 section đã có */
+.specs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    background-color: var(--color-background-light); /* Light background for container */
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.specs-image {
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px; /* Limit image size */
+    margin: 0 auto; /* Center if wraps */
+}
+
+.specs-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* Add shadow */
+}
+
+.specs-details {
+    flex: 1.2; /* Slightly more space for details */
+    min-width: 320px;
+}
+
+.specs-list {
+    margin-bottom: 30px;
+}
+
+.specs-list div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0; /* Increased padding */
+    border-bottom: 1px solid var(--color-border); /* Solid border */
+    gap: 15px;
+}
+
+.specs-list div:last-child {
+    border-bottom: none;
+}
+
+.specs-list dt {
+    font-weight: normal;
+    color: var(--color-text-secondary);
+    text-align: left;
+    flex-shrink: 0;
+    font-size: 1em; /* Standard size */
+}
+
+.specs-list dd {
+    font-weight: bold;
+    color: var(--color-text-primary);
+    text-align: right;
+    font-size: 1.05em; /* Slightly larger value */
+}
+
+.specs-button {
+    text-align: left;
+    margin-top: 20px; /* Add margin */
+}
+@media (max-width: 768px) {
+    .specs-button {
+        text-align: center; /* Center button on mobile */
+    }
+     .specs-container {
+        padding: 20px; /* Reduce padding on mobile */
+    }
+}
+
+
+/* === Section Hỗ trợ tài chính & Nhu cầu tư vấn === */
+
+.ho-tro-tai-chinh {
+     background-color: var(--color-background-light); /* Ensure background */
+}
+.nhu-cau-tu-van {
+     background-color: var(--color-background-white); /* Ensure background */
+}
+
+
+.container11 {
+    display: flex;
+    justify-content: space-around; /* Creates equal space around the boxes */
+    padding: 20px; /* Adds some padding around the container */
+    background-color: #f8f8f8; /* Optional: Adds a light background to the container */
+}
+
+.container11 .box {
+    background-color: #fff; /* Sets the background color of each box to white */
+    border-radius: 8px; /* Adds rounded corners to the boxes */
+    padding: 20px; /* Adds padding inside each box */
+    text-align: center; /* Centers the content (icon and text) within the box */
+    width: 30%; /* Adjust as needed to control the width of the boxes */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+.container11 .box img {
+    max-width: 50px; /* Adjust the maximum width of the icons */
+    height: auto; /* Maintains the aspect ratio of the icons */
+    display: block; /* Makes the image a block-level element to center it */
+    margin: 0 auto 10px; /* Centers the image horizontally and adds some space below */
+}
+
+.container11 .box p {
+    margin-top: 0; /* Removes the default top margin of the paragraph */
+    font-size: 1em; /* Adjust the font size of the text */
+    color: #333; /* Sets the color of the text */
+}
+
+/* Optional: Add some subtle shadow to the boxes */
+.container11 .box {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

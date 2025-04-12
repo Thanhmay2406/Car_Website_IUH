@@ -1,0 +1,702 @@
+/* === Biến CSS === */
+:root {
+    --font-primary: "Lexend_Deca", Arial, sans-serif; /* Font chính */
+    --font-secondary: Arial, sans-serif; /* Font phụ nếu cần */
+    --color-text-primary: #333;
+    --color-text-secondary: #444;
+    --color-text-light: #f0f0f0;
+    --color-text-white: #fff;
+    --color-primary: #1c69d4; /* Màu xanh dương chính */
+    --color-primary-dark: #1654a9;
+    --color-background-light: #f9f9f9;
+    --color-background-medium: #f0f0f0;
+    --color-background-white: #fff;
+    --color-border: #ddd;
+    --max-width-content: 1200px;
+    --padding-horizontal: 5%;
+}
+
+/* === Reset cơ bản & Font === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--color-text-primary);
+    background-color: var(--color-background-white); /* Nền trắng mặc định */
+    line-height: 1.6; /* Thêm line-height cơ bản */
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Kế thừa màu chữ */
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Tránh khoảng trắng dưới ảnh */
+}
+
+/* === Layout Wrappers === */
+.container {
+    position: relative;
+    height:250rem;
+    font-family: "Lexend_Deca", sans-serif;
+   
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: var(--max-width-content);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--padding-horizontal);
+    padding-right: var(--padding-horizontal);
+}
+
+/* === Header (Giả định dựa trên component) === */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-text-primary);
+    padding: 10px var(--padding-horizontal);
+    background-color: var(--color-background-white);
+    height: 70px;
+    position: relative; /* Hoặc sticky nếu muốn */
+    z-index: 10;
+    border-bottom: 1px solid var(--color-border); /* Thêm đường viền nếu muốn */
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+}
+
+.main-nav ul {
+    display: flex;
+}
+
+.main-nav ul li {
+    margin-left: 25px;
+}
+
+.main-nav ul li a {
+    font-size: 0.9em;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: var(--color-primary); /* Đổi màu hover */
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+}
+
+.header-controls > * {
+    margin-left: 15px;
+}
+
+/* === Hero Section === */
+.hero-section {
+    background-image: url('../../images/models/img-bmw-i7/bmw_7_series_i7_sp_desktop.webp');
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 70px - 50px); /* Chiều cao màn hình trừ header và nav phụ */
+    min-height: 600px;
+    color: var(--color-text-white);
+    display: flex;
+    align-items: center;
+    padding-left: var(--padding-horizontal);
+}
+
+.hero-content {
+    max-width: 50%;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    height: 80%; /* Căn chỉnh nội dung bên trong */
+}
+
+.hero-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+    font-weight: lighter;
+}
+
+.hero-content h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* === Buttons === */
+.btn {
+    padding: 12px 25px;
+    border: 1px solid transparent; /* Thêm border transparent để giữ layout khi hover */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: inherit; /* Kế thừa font */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    display: inline-block; /* Cho thẻ <a> hoạt động như nút */
+    text-align: center;
+}
+
+.hero-buttons .btn {
+    margin-right: 15px;
+    margin-bottom: 40px;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+    border-color: var(--color-primary);
+}
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-text-white); /* Màu chữ cho hero */
+    border: 1px solid var(--color-text-white); /* Border cho hero */
+}
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Nút Secondary trên nền sáng */
+.consultation-section .btn-secondary,
+.fuel-consumption-section .btn-secondary {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.consultation-section .btn-secondary:hover,
+.fuel-consumption-section .btn-secondary:hover {
+    background-color: rgba(28, 105, 212, 0.1);
+    color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+}
+
+/* Nút dạng link */
+.btn-link {
+     background-color: transparent;
+     color: var(--color-primary);
+     padding: 10px 20px;
+     border: none;
+}
+.btn-link:hover {
+    background-color: transparent;
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+.hero-info {
+    display: flex;
+    margin-top: auto;
+}
+.info-item {
+    margin-right: 40px;
+}
+.info-item span {
+    display: block;
+    font-size: 0.9em;
+    color: #ccc;
+    margin-bottom: 5px;
+}
+.info-item strong {
+    font-size: 1.1em;
+}
+
+/* === Secondary Navigation === */
+.secondary-nav {
+    background-color: var(--color-background-medium);
+    height: 50px;
+    border-bottom: 1px solid var(--color-border);
+}
+.secondary-nav .content-wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.secondary-nav ul {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.secondary-nav ul li {
+    margin-right: 30px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.secondary-nav ul li a {
+    color: var(--color-text-primary);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s ease;
+    font-size: 0.9em;
+}
+
+.secondary-nav ul li a:hover {
+    border-bottom-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* === Sticky Button === */
+.btn-sticky {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-text-white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+.btn-sticky:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* === Section Styles === */
+section {
+    padding-top: 40px; /* Khoảng cách chung giữa các section */
+    padding-bottom: 40px;
+}
+
+section h2 { /* Tiêu đề chính của Section */
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    margin-bottom: 30px;
+    text-align: left;
+}
+section h3 { /* Tiêu đề phụ trong Section */
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--color-text-primary);
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+section p {
+    margin-bottom: 1em;
+    color: var(--color-text-secondary);
+}
+section ul {
+     padding-left: 20px; /* Indent cho list */
+}
+section ul li {
+    margin-bottom: 0.8em;
+    list-style: disc; /* Mặc định là disc */
+}
+
+/* --- Car Description Section --- */
+.car-description-section p {
+    font-size: 0.95em;
+}
+
+/* --- Driver Assist Section --- */
+.driver-assist-section .assist-image {
+    text-align: center;
+    margin-top: 2em;
+}
+
+/* --- Tech Features List Section --- */
+.tech-features-list-section .features-title {
+    font-weight: bold;
+    margin-bottom: 1em;
+    color: var(--color-text-primary);
+}
+.tech-features-list-section .feature-list {
+    padding-left: 20px;
+}
+.tech-features-list-section .feature-list li {
+    font-size: 0.9em;
+}
+
+/* --- Features Grid Section (Màn hình cong, Ứng dụng, HUD) --- */
+.features-grid-section .features-grid {
+    display: grid; /* Sử dụng Grid cho layout này */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cột tự động co giãn */
+    gap: 30px;
+    margin-bottom: 40px; /* Khoảng cách trước các cặp image-content */
+}
+
+.features-grid .feature-column {
+    text-align: left;
+}
+
+.features-grid .feature-column img {
+    margin-bottom: 15px;
+}
+
+.features-grid .feature-column h3 {
+     font-size: 1.2em; /* Điều chỉnh lại */
+     margin-bottom: 10px;
+}
+
+.features-grid .feature-column p {
+    font-size: 0.95em;
+    margin-bottom: 1em;
+}
+
+/* List trong cột Ứng dụng MyBMW */
+.features-grid .feature-column ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.features-grid .feature-column ul li {
+    font-size: 0.95em;
+    margin-bottom: 0.6em;
+    padding-left: 1.2em;
+    position: relative;
+    list-style: none; /* Bỏ disc mặc định */
+}
+.features-grid .feature-column ul li::before {
+    content: "-";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+    color: var(--color-text-secondary);
+}
+
+/* --- Image Content Pair Layout --- */
+.image-content-pair {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép wrap trên màn hình nhỏ */
+    align-items: center;
+    gap: 30px;
+    margin-top: 40px; /* Khoảng cách giữa các cặp */
+}
+.image-content-pair .image-half,
+.image-content-pair .content-half {
+    flex: 1; /* Chia đôi không gian */
+    min-width: 280px; /* Để wrap hợp lý */
+}
+.image-content-pair .image-half img {
+    border-radius: 8px;
+}
+.image-content-pair .content-half h3 {
+     font-size: 1.3em; /* Điều chỉnh lại */
+}
+.image-content-pair .content-half ul {
+    padding-left: 20px;
+}
+.image-content-pair .content-half li {
+     list-style: disc;
+     margin-bottom: 0.5em;
+     font-size: 0.95em;
+}
+
+/* Đảo ngược thứ tự cho một số cặp */
+.image-content-pair.reverse {
+    flex-direction: row-reverse;
+}
+
+/* --- Exterior Design Section --- */
+.exterior-design-section {
+     background-color: var(--color-background-light);
+}
+.exterior-design-section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.exterior-design-section .design-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+.exterior-design-section .design-column {
+    background-color: var(--color-background-white);
+    border-radius: 8px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.exterior-design-section .design-column img {
+    width: 100%; /* Chiếm hết chiều rộng cột */
+    max-width: 250px; /* Giới hạn chiều rộng ảnh */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.exterior-design-section .design-column h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+.exterior-design-section .design-column p {
+    font-size: 0.9em; /* Chữ nhỏ hơn một chút */
+    flex-grow: 1; /* Đẩy nội dung xuống nếu cần */
+}
+
+
+/* --- Interior Design Section --- */
+.interior-design-section .large-image img {
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+.interior-design-section .interior-features-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 3 cột linh hoạt */
+    gap: 30px;
+}
+.interior-design-section .interior-feature-column {
+    text-align: left;
+}
+.interior-design-section .interior-feature-column img {
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.interior-design-section .interior-feature-column h3 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+.interior-design-section .interior-feature-column p {
+    font-size: 0.9em;
+}
+
+/* --- Accessories Section --- */
+.accessories-section {
+    background-color: var(--color-background-light);
+}
+.accessories-section h2 {
+    text-align: center;
+}
+.accessories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 cột linh hoạt */
+    gap: 30px;
+}
+.accessory-item {
+    background-color: var(--color-background-white);
+    border-radius: 8px;
+    padding: 30px; /* Tăng padding */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column; /* Sắp xếp dọc */
+}
+.accessory-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.accessory-image img {
+    max-width: 250px; /* Giới hạn kích thước ảnh phụ kiện */
+    border-radius: 8px;
+}
+.accessory-item h3 {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+.accessory-item p {
+    font-size: 0.9em;
+    flex-grow: 1; /* Đẩy nội dung xuống */
+}
+
+/* --- Performance Section --- */
+.performance-section h2 {
+    text-align: center;
+}
+.performance-section .sub-heading { /* Thay thế H2 thứ 2 */
+    font-size: 1.5em;
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin-bottom: 30px;
+    font-weight: lighter;
+}
+.performance-section .intro-text {
+    font-size: 0.95em;
+    margin-bottom: 40px;
+    text-align: center;
+    max-width: 800px; /* Giới hạn chiều rộng đoạn intro */
+    margin-left: auto;
+    margin-right: auto;
+}
+.performance-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 2 cột linh hoạt */
+    gap: 30px;
+}
+.performance-feature-item {
+    background-color: var(--color-background-white);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.performance-feature-item .feature-image {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.performance-feature-item .feature-image img {
+     border-radius: 8px;
+}
+.performance-feature-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+.performance-feature-item p {
+    font-size: 0.9em;
+}
+
+/* --- Specs Section --- */
+.specs-section {
+     background-color: var(--color-background-light);
+}
+.specs-section h3 { /* Tên phiên bản xe */
+    font-size: 1.5em;
+    font-weight: normal;
+    margin-bottom: 30px;
+}
+.specs-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: flex-start; /* Căn lề trên */
+}
+.specs-content .car-dimensions {
+    flex: 1;
+    min-width: 250px;
+}
+.specs-content .car-dimensions img {
+    border-radius: 8px;
+}
+.specs-content .specs-table-container {
+    flex: 1.5; /* Cho bảng nhiều không gian hơn */
+    min-width: 300px;
+}
+.specs-content .specs-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.specs-content .specs-table-container td {
+    padding: 12px 5px; /* Tăng padding */
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    font-size: 0.9em;
+}
+.specs-content .specs-table-container td:first-child {
+    font-weight: bold;
+    color: var(--color-text-primary);
+    width: 55%; /* Điều chỉnh lại */
+}
+.specs-content .specs-table-container tr:last-child td {
+    border-bottom: none;
+}
+.specs-content .explore-more {
+    margin-top: 25px;
+    text-align: left;
+}
+
+/* --- Pricing & Services Section --- */
+.pricing-services-section .image-content-pair .content-half h3 {
+     font-size: 1.3em;
+}
+
+/* --- Consultation Section --- */
+.consultation-section {
+     background-color: var(--color-background-light);
+}
+.consultation-section .image-content-pair .content-half h2 {
+     font-size: 1.8em; /* Điều chỉnh lại */
+     margin-bottom: 20px;
+}
+.consultation-section .image-content-pair .content-half p {
+    margin-bottom: 25px;
+}
+
+/* --- Fuel Consumption Section --- */
+.fuel-consumption-models {
+    display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Hiển thị 2 cột nếu đủ chỗ */
+    gap: 30px;
+    margin-bottom: 30px;
+}
+.fuel-consumption-models .model-specs {
+    background-color: var(--color-background-white);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.fuel-consumption-models .model-specs h3 {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+.fuel-consumption-models .model-specs ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+.fuel-consumption-models .model-specs ul li {
+    font-size: 0.9em;
+    margin-bottom: 8px;
+}
+.fuel-consumption-section .disclaimer {
+    font-size: 0.8em;
+    color: #777;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.fuel-consumption-section .cta-buttons {
+    display: flex;
+    gap: 15px; /* Tăng gap */
+    flex-wrap: wrap; /* Cho phép nút xuống dòng */
+}
+
+.container11 {
+    display: flex;
+    justify-content: space-around; /* Creates equal space around the boxes */
+    padding: 20px; /* Adds some padding around the container */
+    background-color: #f8f8f8; /* Optional: Adds a light background to the container */
+}
+
+.container11 .box {
+    background-color: #fff; /* Sets the background color of each box to white */
+    border-radius: 8px; /* Adds rounded corners to the boxes */
+    padding: 20px; /* Adds padding inside each box */
+    text-align: center; /* Centers the content (icon and text) within the box */
+    width: 30%; /* Adjust as needed to control the width of the boxes */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+.container11 .box img {
+    max-width: 50px; /* Adjust the maximum width of the icons */
+    height: auto; /* Maintains the aspect ratio of the icons */
+    display: block; /* Makes the image a block-level element to center it */
+    margin: 0 auto 10px; /* Centers the image horizontally and adds some space below */
+}
+
+.container11 .box p {
+    margin-top: 0; /* Removes the default top margin of the paragraph */
+    font-size: 1em; /* Adjust the font size of the text */
+    color: #333; /* Sets the color of the text */
+}
+
+/* Optional: Add some subtle shadow to the boxes */
+.container11 .box {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,777 @@
+/* --- Global Styles --- */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased; /* Cải thiện hiển thị font trên Webkit */
+    -moz-osx-font-smoothing: grayscale; /* Cải thiện hiển thị font trên Firefox */
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    vertical-align: middle; /* Căn chỉnh ảnh tốt hơn */
+}
+
+h1, h2, h3, h4, h5, h6 { /* Áp dụng cho tất cả heading */
+    margin-top: 0;
+    margin-bottom: 0.75em;
+    font-weight: 600; /* Hơi đậm hơn mặc định */
+    line-height: 1.3; /* Chiều cao dòng hợp lý cho heading */
+}
+
+h1 { font-size: clamp(2.5em, 5vw, 3em); } /* Responsive font size */
+h2 { font-size: clamp(1.5em, 4vw, 1.8em); color: #1a1a1a; }
+h3 { font-size: clamp(1.1em, 3vw, 1.3em); }
+
+p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.2s ease; /* Thêm hiệu ứng chuyển màu mượt */
+}
+
+a:hover {
+    color: #0052a3; /* Đổi màu khi hover */
+    text-decoration: underline;
+}
+
+.container {
+    position: relative;
+    height:550rem;
+    font-family: "Lexend_Deca", sans-serif;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 1100px; /* Giới hạn chiều rộng nội dung */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px; /* Khoảng đệm hai bên */
+    padding-right: 20px;
+}
+
+/* --- Header / Footer Placeholders --- */
+header-component, footer-component {
+    display: block; /* Cần thiết cho custom elements */
+    /* Thêm style nếu cần */
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500; /* Hơi đậm */
+    text-align: center;
+    transition: all 0.2s ease; /* Áp dụng transition cho tất cả thuộc tính */
+    margin: 5px;
+    white-space: nowrap; /* Ngăn nút bị xuống dòng chữ */
+}
+
+.btn-primary {
+    background-color: #0066cc;
+    color: #fff;
+    border-color: #0066cc;
+}
+
+.btn-primary:hover,
+.btn-primary:focus { /* Thêm focus style cho accessibility */
+    background-color: #0052a3;
+    border-color: #0052a3;
+    color: #fff;
+    text-decoration: none;
+    outline: none; /* Bỏ outline mặc định, thay bằng box-shadow nếu muốn */
+    /* box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.3); */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #888;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: #e0e0e0;
+    border-color: #555;
+    color: #333;
+    text-decoration: none;
+    outline: none;
+     /* box-shadow: 0 0 0 3px rgba(136, 136, 136, 0.3); */
+}
+
+/* --- Hero Section --- */
+.hero-section {
+
+    background: url('../../images/models/img-bmw-i4/bmw_i4_edrive_40_onepager_sp_mobile.webp') no-repeat center center/cover; /* Cập nhật ảnh nền */
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 70px - 50px); /* Chiều cao màn hình trừ header và nav phụ */
+    min-height: 600px;
+    color: var(--color-text-white);
+    display: flex;
+    align-items: center;
+    padding-left: var(--padding-horizontal);
+}
+
+.hero-content {
+    max-width: 1100px;
+    /* Không cần margin: 0 auto vì đã có justify-content: center ở parent */
+}
+
+.hero-content h1 {
+    font-size: clamp(3em, 8vw, 4.5em); /* Tăng kích thước */
+    margin-bottom: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700; /* Đậm hơn */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* Thêm bóng đổ */
+}
+
+.hero-content h2 {
+    font-size: clamp(1.5em, 4vw, 2em);
+    margin-bottom: 1em;
+    color: #fff;
+    font-weight: 400; /* Nhẹ hơn H1 */
+     text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
+.hero-buttons {
+    margin-bottom: 2em;
+}
+
+.hero-info {
+    display: inline-flex; /* Giữ lại inline-flex */
+    flex-wrap: wrap; /* Cho phép wrap nếu không đủ chỗ */
+    justify-content: center;
+    gap: 30px; /* Giảm gap một chút */
+    background-color: rgba(0, 0, 0, 0.4); /* Tăng độ mờ */
+    padding: 15px 25px;
+    border-radius: 4px;
+    margin-top: 20px; /* Thêm khoảng cách với nút */
+}
+
+.info-item {
+    text-align: center;
+}
+
+.info-item span {
+    display: block;
+    font-size: 0.9em;
+    margin-bottom: 3px; /* Giảm margin */
+    color: #ddd; /* Sáng hơn chút */
+}
+
+.info-item strong {
+    display: block;
+    font-size: 1.1em; /* Giảm nhẹ */
+    font-weight: 600;
+}
+
+/* --- Secondary Navigation --- */
+.secondary-nav {
+    background-color: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Thêm bóng đổ nhẹ */
+}
+
+.secondary-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 30px;
+    flex-wrap: wrap; /* Cho phép wrap */
+}
+
+.secondary-nav li a {
+    color: #333;
+    font-weight: 500; /* Dày hơn chút */
+    padding: 10px 5px; /* Thêm padding ngang */
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+    border-bottom: 2px solid transparent; /* Chuẩn bị cho hiệu ứng active */
+    display: block; /* Đảm bảo padding hoạt động tốt */
+}
+
+.secondary-nav li a:hover,
+.secondary-nav li a.active { /* Thêm class active nếu dùng JS */
+    color: #0066cc;
+    text-decoration: none;
+    border-bottom-color: #0066cc; /* Hiệu ứng gạch chân khi active/hover */
+}
+
+/* --- Sticky Button --- */
+.btn-sticky {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 101;
+    background-color: #1c69d4; /* Màu xanh BMW đậm hơn */
+    color: #fff;
+    padding: 10px 18px; /* Hơi nhỏ hơn */
+    border: none;
+    border-radius: 5px; /* Tròn hẳn */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-sticky:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* --- General Section Styling --- */
+section {
+    padding: clamp(40px, 8vw, 70px) 0; /* Responsive padding */
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+/* Section cuối cùng không cần border */
+body > .container > section:last-of-type,
+body > .container > div:last-of-type { /* Áp dụng cho cả div cuối (container11) */
+     border-bottom: none;
+}
+
+/* Section kề nhau có màu nền khác nhau */
+section:nth-child(even) {
+     background-color: #f9f9f9;
+}
+/* Section đầu tiên sau nav luôn là trắng */
+.secondary-nav + section {
+    background-color: #fff;
+}
+/* Section chứa accordion luôn trắng */
+.accordion-section {
+    background-color: #fff !important; /* Ghi đè nth-child */
+}
+/* Section disclaimer luôn màu nhạt */
+.fuel-consumption-section {
+     background-color: #f9f9f9 !important; /* Ghi đè nth-child */
+}
+
+
+section h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+    font-size: clamp(1.6em, 4vw, 2em); /* Responsive heading */
+}
+
+/* --- Specific Sections --- */
+.car-description-section p {
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1em; /* Chữ to hơn chút */
+    color: #555;
+}
+
+.driver-assist-section p {
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+    color: #555;
+}
+.assist-image img { /* Thêm style cho ảnh này */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+
+/* --- Features Grid Section --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Điều chỉnh minmax */
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.feature-column {
+    text-align: center;
+    background-color: #fff; /* Nền trắng nếu section cha màu xám */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.feature-column:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.feature-column img {
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.feature-column h3 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+.feature-column p {
+    font-size: 0.95em;
+    color: #666;
+}
+
+/* --- Image Content Pair Section --- */
+.image-content-pair {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: clamp(30px, 5vw, 60px); /* Responsive gap */
+    margin-bottom: 40px;
+}
+.features-grid-section .image-content-pair:last-of-type {
+    margin-bottom: 0; /* Bỏ margin cho cặp cuối cùng trong section */
+}
+
+
+.image-half, .content-half {
+    flex: 1;
+    min-width: 280px; /* Giảm min-width */
+}
+
+.image-half img {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.image-content-pair.reverse {
+    flex-direction: row-reverse;
+}
+
+.content-half h3 {
+    margin-bottom: 15px;
+    font-size: clamp(1.2em, 3vw, 1.4em);
+}
+.content-half p {
+    color: #555;
+}
+
+/* --- Accordion Section --- */
+.accordion-section h2 { /* Style cho tiêu đề section accordion */
+     margin-bottom: 1em;
+}
+
+.accordion {
+    max-width: 900px;
+    margin: 0 auto; /* Bỏ margin top/bottom vì đã có padding của section */
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px; /* Tăng padding */
+    cursor: pointer;
+    font-weight: 500; /* Đổi font-weight */
+    font-size: 1.1em; /* Tăng kích thước chữ */
+    list-style: none;
+    transition: background-color 0.2s ease-out;
+    background-color: #fff; /* Đảm bảo nền trắng */
+    color: #333;
+}
+
+.accordion-header::-webkit-details-marker {
+    display: none;
+}
+
+.accordion-header:hover {
+    background-color: #f5f5f5;
+}
+
+.accordion-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid #555;
+    border-bottom: 2px solid #555;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease-in-out;
+    margin-left: 15px;
+    flex-shrink: 0;
+}
+
+/* Trạng thái mở */
+.accordion-item[open] > .accordion-header {
+    background-color: #f0f5fc; /* Nền xanh nhạt khi mở */
+    color: #0052a3; /* Chữ xanh đậm */
+    font-weight: 600;
+}
+.accordion-item[open] > .accordion-header .accordion-icon {
+    transform: rotate(-135deg);
+    border-color: #0052a3; /* Icon cũng đổi màu */
+}
+
+
+.accordion-content {
+    padding: 20px 20px 25px 20px; /* Tăng padding */
+    border-top: 1px solid #e0e0e0;
+    background-color: #fff;
+    line-height: 1.7; /* Tăng line-height */
+    color: #555;
+    font-size: 0.95em; /* Hơi nhỏ hơn header */
+}
+
+.accordion-content p {
+    margin-bottom: 1em;
+}
+.accordion-content p:last-child {
+    margin-bottom: 0;
+}
+.accordion-content p + p { /* Thêm khoảng cách giữa các đoạn p */
+    margin-top: 1em;
+}
+
+
+/* --- Interior/Charging Section --- */
+.interior-features-row, .design-column {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.interior-feature-column img, .design-column img {
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+.interior-feature-column, .design-column { /* Style tương tự feature-column */
+     text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+     transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.interior-feature-column:hover, .design-column:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.interior-feature-column h3, .design-column h3 {
+     font-size: 1.2em; margin-bottom: 10px;
+}
+.interior-feature-column p, .design-column p {
+     font-size: 0.95em; color: #666;
+}
+
+
+/* --- Accessories Section --- */
+.accessories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.accessory-item {
+    text-align: center;
+    background-color: #fff; /* Nếu section cha màu xám */
+    padding-bottom: 20px; /* Padding dưới cùng */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden; /* Đảm bảo bo góc cho ảnh */
+     transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.accessory-item:hover {
+     transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.accessory-image {
+    background-color: #f0f0f0;
+    margin-bottom: 15px;
+    /* Bỏ padding để ảnh chiếm hết */
+    /* padding: 10px; */
+    /* border-radius: 4px; */ /* Bỏ bo góc riêng */
+    display: flex; /* Sử dụng flex để căn giữa */
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 200px; /* Đặt chiều cao cố định cho ảnh */
+}
+.accessory-image img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover; /* Ảnh sẽ cố gắng phủ hết khung */
+}
+
+
+.accessory-item h3 {
+    font-size: 1.1em;
+    padding: 0 15px; /* Padding cho chữ */
+     margin-bottom: 0; /* Bỏ margin dưới */
+}
+
+/* --- Performance Section --- */
+.performance-features {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.performance-feature-item {
+    max-width: 700px; /* Tăng max-width */
+    text-align: center;
+    background-color: #fff; /* Nền trắng nếu section cha màu xám */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.feature-image img {
+    margin-bottom: 20px;
+    border-radius: 8px; /* Bo góc ảnh */
+}
+.performance-feature-item h3 {
+    font-size: 1.3em;
+}
+.performance-feature-item p {
+    color: #555;
+    font-size: 1.05em;
+}
+
+
+/* --- Specs Section --- */
+.specs-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+    background: #fff; /* Nền trắng */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.07);
+}
+
+.car-dimensions {
+    flex: 1 1 45%; /* Cho phép thu nhỏ, chiếm ~45% */
+    min-width: 280px;
+    /* max-width: 500px; */ /* Bỏ max-width để linh hoạt hơn */
+}
+.car-dimensions img {
+    border-radius: 8px;
+}
+
+
+.specs-table-container {
+    flex: 1 1 50%; /* Chiếm ~50% */
+    min-width: 300px;
+}
+
+.specs-section h3 { /* Tiêu đề phụ BMW i4 eDrive40 */
+    text-align: left;
+    margin-bottom: 1em;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.specs-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.specs-table-container td {
+    padding: 12px 5px; /* Tăng padding */
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    font-size: 0.95em;
+}
+
+.specs-table-container tr:last-child td {
+    border-bottom: none;
+}
+
+.specs-table-container td:first-child {
+    font-weight: 500; /* Đổi font-weight */
+    color: #555;
+    width: 45%; /* Điều chỉnh lại */
+    padding-right: 15px; /* Khoảng cách với giá trị */
+}
+.specs-table-container td:last-child {
+    font-weight: 600; /* Giá trị đậm hơn */
+    color: #1a1a1a;
+}
+
+
+/* --- Pricing/Financial Section --- */
+.pricing-services-section p:first-of-type { /* Style cho đoạn text mô tả */
+    text-align: center;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+    color: #555;
+    font-size: 1.1em;
+}
+
+.financial-support h3 {
+    margin-bottom: 15px;
+}
+
+/* --- Consultation Section --- */
+.consultation-section .text-column { /* Căn giữa text trong cột */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text-column h2 {
+    font-size: clamp(1.6em, 4vw, 2em); /* Đồng bộ với các H2 khác */
+}
+.text-column p {
+    color: #555;
+}
+.find-dealer-button {
+    margin-top: 25px; /* Tăng margin */
+    align-self: flex-start; /* Nút căn trái */
+}
+
+/* --- Fuel Consumption / Disclaimer Section --- */
+.fuel-consumption-section {
+    /* background-color: #f9f9f9; */ /* Đã xử lý bằng nth-child */
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: none;
+}
+
+.disclaimer {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+.cta-buttons {
+    margin-top: 10px;
+}
+
+/* --- Bottom Icon Boxes --- */
+.container11 {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px 20px; /* Tăng padding */
+    background-color: #e9e9e9;
+    flex-wrap: wrap;
+     border-top: 1px solid #dcdcdc; /* Thêm đường kẻ trên */
+}
+
+.box {
+    background-color: #fff;
+    padding: 25px;
+    text-align: center;
+    border-radius: 8px; /* Bo góc nhiều hơn */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    flex: 1;
+    min-width: 200px;
+    max-width: 260px; /* Tăng max-width */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.box:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+
+
+.box img {
+    width: 45px; /* Giảm kích thước icon */
+    height: 45px;
+    margin: 0 auto 15px auto;
+    opacity: 0.8; /* Giảm độ sáng icon */
+}
+
+.box p {
+    margin: 0;
+    font-weight: 500; /* Đổi font-weight */
+    color: #333;
+    font-size: 1em; /* Kích thước chữ */
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) { /* Thêm breakpoint cho tablet lớn */
+    .content-wrapper { max-width: 960px; }
+     .hero-section { min-height: 60vh; }
+     .secondary-nav ul { gap: 20px; }
+     .specs-content { gap: 30px; }
+     .car-dimensions { flex-basis: 100%; order: 2; } /* Ảnh xuống dưới table */
+     .specs-table-container { flex-basis: 100%; order: 1; }
+}
+
+
+@media (max-width: 768px) {
+    .content-wrapper { padding-left: 15px; padding-right: 15px; }
+    h1 { font-size: clamp(2em, 6vw, 2.5em); }
+    h2 { font-size: clamp(1.4em, 5vw, 1.6em); }
+     h3 { font-size: clamp(1em, 4vw, 1.1em); }
+    .hero-section { min-height: 50vh; padding: 40px 15px; }
+    .hero-info { gap: 15px; padding: 10px 15px; }
+    .info-item strong { font-size: 1em; }
+
+    .secondary-nav { padding: 8px 0; }
+    .secondary-nav ul { justify-content: space-around; gap: 10px; }
+    .secondary-nav li a { font-size: 0.9em; padding: 8px 3px; }
+
+    section { padding: clamp(30px, 6vw, 50px) 0; }
+
+    .image-content-pair,
+    .image-content-pair.reverse {
+        flex-direction: column;
+        gap: 25px;
+    }
+     .image-half, .content-half { min-width: unset; } /* Bỏ min-width */
+
+    .specs-content { padding: 20px; }
+    .specs-table-container td:first-child { width: 40%; }
+
+    .btn-sticky { padding: 8px 15px; font-size: 0.85em; bottom: 15px; right: 15px; }
+
+     .features-grid,
+     .interior-features-row,
+     .accessories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+     }
+     .container11 { gap: 15px; padding: 40px 15px; }
+     .box { min-width: 180px; padding: 20px; }
+     .box p { font-size: 0.9em;}
+
+}
