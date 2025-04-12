@@ -482,7 +482,7 @@ class HeaderComponent extends HTMLElement {
 
                         <div class="dropdown-section">
                             <h4>DỊCH VỤ VÀ SỬA CHỮA</h4>
-                            <a href="">Ưu đãi 18% giá phụ tùng chính hãng</a>
+                            <a href="/pages/bmw-value-service-promotion.html">Ưu đãi 18% giá phụ tùng chính hãng</a>
                             <a href="/pages/bmw-service-new.html">Khám phá Dịch vụ BMW</a>
                             <a href="/pages/bmw-proactive-care.html">Chăm sóc chủ động Proactive Care</a>
                             <a href="/pages/bmw-service-inclusive.html">Bảo dưỡng trọn gói BSI</a>
