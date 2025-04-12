@@ -445,7 +445,7 @@ class HeaderComponent extends HTMLElement {
                             <h4>XE ĐIỆN</h4>
                             <div class="dropdown-grid">
                                 <a href="/pages/charging-new.html">Charning</a>
-                                <a href="">Plug-in Hybrid</a>
+                                <a href="/pages/plug-in-hybrids-new.html">Plug-in Hybrid</a>
                             </div>
                         </div>
 
