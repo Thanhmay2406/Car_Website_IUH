@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Khai báo bộ ký tự sử dụng -->
+    <meta charset="UTF-8">
+    <!-- Thiết lập giao diện phù hợp trên các thiết bị di động -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Icon trên tab trình duyệt -->
+    <link rel="shortcut icon" href="../../assets/images/logo/logo.png" type="image/x-icon">
+
+    <!-- Gọi file JavaScript định nghĩa thành phần xe -->
+    <script src="../../assets/js/components/car_models.js"></script>
+    <!-- Gọi file JavaScript định nghĩa footer -->
+    <script src="../../assets/js/components/footer.js"></script>
+
+    <!-- Gọi file CSS riêng cho trang -->
+    <link rel="stylesheet" href="../../assets/css/models/bmw5.css">
+
+    <!-- Nhúng font chữ Lexend Deca từ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+
+    <!-- Gọi Bootstrap 5 để sử dụng layout và component -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Gọi JavaScript của Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <!-- Tiêu đề hiển thị trên tab -->
+    <title>THE 5
+        BMW 5 SERIES</title>
+
+    <style>
+        /* Style riêng trong file HTML */
+        
+        /* Cài đặt font chữ riêng từ thư mục local */
+        @font-face {
+            font-family: "Lexend_Deca";
+            src: url(../../assets/fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf);
+            font-weight: normal;
+        }
+
+        /* Reset lại margin, padding và thiết lập font chữ mặc định */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Lexend_Deca", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header sẽ được render từ component -->
+    <header><header-component></header-component></header>
+
+    <!-- Phần container bao ngoài đầu trang -->
+    <div class="container_first">
+        <!-- Canh lề trái cho nội dung bên trong -->
+        <div style="margin-left: 2rem;">
+            <!-- Container chính cho tiêu đề và nút -->
+            <div class="container"
+                style="position: relative;top: 9rem;margin-bottom: 19rem;margin-left: 0;padding-left: 0;">
+                
+                <!-- Tiêu đề xe -->
+                <div class="title">
+                    <h1>THE 5</h1>
+                    <h4 class="h4">BMW 5
+                        SERIES </h4>
+                </div>
+
+                <!-- Nút dẫn đến trang đặt hẹn lái thử -->
+                <div>
+                    <a href="../test-drive.html">
+                        <button class="btn btn-primary mt-3">ĐẶT HẸN LÁI THỬ</button>
+                    </a>
+                </div>
+            </div>
+
+           <!-- Dòng hiển thị giá xe và loại nhiên liệu -->
+<div class="d-flex gap-3" style="margin-left:0; color:white">
+    <!-- Cột hiển thị giá -->
+    <div style="color: white;">
+        <p class="lead" style="color:white">Giá Từ</p>
+        <p>1.979.000.000 VNĐ </p>
+    </div>
+    <!-- Cột hiển thị loại nhiên liệu -->
+    <div>
+        <p class="lead">Nhiên Liệu</p>
+        <p>Xăng</p>
+    </div>
+</div> <!-- kết thúc phần thông tin giá và nhiên liệu -->
+
+</div> <!-- kết thúc div margin-left -->
+
+</div> <!-- kết thúc container_first -->
+
+<!-- Thanh điều hướng (navbar) cố định trên cùng khi cuộn -->
+<nav class="navbar sticky-top" style="padding: 0;">
+
+    <!-- Nút “Thông số kỹ thuật” nổi ở góc phải -->
+    <div style="position: absolute; right: 0; top: 0; margin: 0.5rem;">
+        <a href="https://drive.google.com/file/d/1i6yldXNVkOA4eQxbLtrEIBquYB3S7ljI/view">
+            <button class="btn btn-primary">Thông số kỹ thuật</button>
+        </a>
+    </div>
+
+    <!-- Danh sách liên kết trong navbar -->
+    <div class="nav_container" style="text-align: center;">
+        <ul class="mt-3 gap-3">
+            <li><a href="#design_details">Thiết kế</a></li>
+            <li><a href="#specification">Thông số kỹ thuật</a></li>
+            <li style="margin: 0 1rem;"><a href="#finance">Tài chính</a></li>
+            <li style="margin: 0 1rem;"><a href="#service_parts">Dịch vụ & Phụ tùng</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Phần mô tả tổng quan ban đầu của dòng xe -->
+<div class="fuel_details mt-3">
+    <p>
+        BMW 5 Series là biểu tượng của sự kết hợp giữa thể thao và sang trọng. Ngay từ ánh nhìn đầu tiên, chiếc xe đã toát lên vẻ thanh lịch và mạnh mẽ riêng biệt. Các đường nét tinh tế tạo nên vẻ ngoài hiện đại và đẳng cấp. Nội thất sang trọng và tiện nghi được trang bị công nghệ tiên tiến cùng các tính năng dành riêng cho xe thể thao, mang lại trải nghiệm lái của tương lai. Động cơ vận hành của 5 Series mang đến cảm giác lái mạnh mẽ kết hợp cùng công nghệ đột phá, BMW 5 Series tạo nên sự thoải mái, tự tin và trên hết là niềm vui lái xe tuyệt vời trong mọi hành trình.
+
+
+    </p>
+</div> <!-- Kết thúc phần mô tả -->
+    <div class="design mt-5" id="design_details">
+        <h1>KHẢ NĂNG XỬ LÝ TỐI ƯU CỦA CHIẾC BMW 5 SERIES</h1>
+        <p>Trục trước của BMW 5 SERIES mới rộng hơn 25 mm so với phiên bản tiền nhiệm, mang lại khả năng lái tối ưu và thể thao hơn. Kết hợp với động cơ BMW TwinPower Turbo thế hệ mới nhất và hệ thống treo được tinh chỉnh hoàn hảo với những điểm nổi bật như vi sai thể thao M, tạo nên trải nghiệm lái đầy năng động và ổn định cho xe.​​</p>
+        <div class="row mt-2">
+            <div class="col">
+                <div class="card" style="border: none;">
+                    <img class="card-img-top" src="../../assets/images/models/bmw5/bmw5.1.webp" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="design mt-5" id="design_details_1">
+        <h1>BMW 5 SERIES VỚI CẢM GIÁC LÁI NĂNG ĐỘNG ĐẶC TRƯNG.</h1>
+        <!-- Hàng ngang (row) trong hệ thống lưới Bootstrap -->
+<div class="row">
+
+    <!-- Một cột trong hàng, tự co giãn theo nội dung -->
+    <div class="col">
+
+        <!-- Thẻ card dùng để bao quanh nội dung hiển thị (ví dụ ảnh, text) -->
+        <div class="card">
+
+                    <img class="card-img-top" src="../../assets/images/models/bmw5/bmw5.2.webp" alt="Card image">
+
+                </div>
+                <p style="text-align: center;">Hệ thống treo thích ứng M với giảm chấn điều khiển điện tử có khả năng tùy chỉnh độ cứng/mềm theo ý người lái, đảm bảo trải nghiệm lái thể thao nhưng không đánh đổi độ thoải mái và êm ái.</p>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top" src="../../assets/images/models/bmw5/bmw5.3.webp" alt="Card image">
+
+                </div>
+                <p style="text-align: center;">Hệ thống lái biến thiên thể thao Servotronic thích nghi theo tốc độ của xe tạo nên trải nghiệm lái phấn khích trứ danh của BMW. Nhờ đó việc điều khiển xe trở nên thú vị và dễ dàng hơn, nhất là khi đỗ xe và quay đầu xe.</p>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top" src="../../assets/images/models/bmw5/bmw5.4.webp" alt="Card image">
+
+                </div>
+                <p style="text-align: center;">Tùy chọn vi sai thể thao M Sport tối ưu hóa lực kéo cùng sự ổn định khi lái giúp chuyển làn và tăng tốc ra khỏi các khúc cua một cách dễ dàng cũng như hỗ trợ khi vào cua nhanh trong điều kiện đường thay đổi. Hệ thống này giúp đảm bảo trải nghiệm lái xe mạnh mẽ và an toàn đặc trưng của BMW.</p>
+            </div>
+        </div>
+        <div class="design mt-5" id="design_details_2">
+            <h1>BMW 5 SERIES ĐEM LẠI SỰ THOẢI MÁI VỚI CÁC TÍNH NĂNG THÔNG MINH.</h1>
+            <p>
+                Công nghệ kỹ thuật số và hệ thống hỗ trợ người lái của chiếc BMW 5 SERIES sẽ cung cấp cho bạn nhiều chức năng hữu ích để bạn có thể vận hành tiện lợi và dễ dàng.
+            </p>
+            <div class="row">
+                <div class="col">
+                        <img class="card-img-top" src="../../assets/images/models/bmw5/bmw5.5.webp" alt="Card image" style="width: 400px; display: block; margin: auto;">
+                    </div>
+                    <h1 style="text-align: center;">Trợ lý ảo thông minh.</h1>
+                    <p style="text-align: center;">Kết nối với chiếc xe của bạn bằng trợ lý ảo thông minh BMW Intelligent Personal Assistant. Tính năng này cho phép bạn sử dụng chức năng ra lệnh bằng giọng nói để điều khiển nhiều chức năng của xe. Hệ thống cũng sẽ giải thích về các chủ đề liên quan đến xe nếu bạn có thắc mắc và giúp bạn hiểu rõ hơn về chiếc BMW của mình.</p>
+                </div>
+            </div>
+    <div class="specification mt-5" id="specification">
+            <div class="row">
+            <div class="col">
+        <h1>THÔNG SỐ KỸ THUẬT CỦA BMW 5 SERIES.</h1>
+        <p> BMW 430i và các thông số động cơ khác của xe. </p>
+        <div class="row">
+            <div class="col mt-3">
+                <div class="card" style="border: none;">
+                    <img class="card-img-top" src="../../assets/images/models/bmw5/bmw5.6.webp" alt="" style="margin-top: 60px;">
+                </div>
+            </div>
+            <div class="col">
+                <table class="table">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="text">Công suất động cơ (kW/hp) tại vòng/phút: </td>
+                        <td style="text-align: right;">135 (184)/5,000-6,500</td>
+                    </tr>
+                    <tr>
+                        <td>Thời gian tăng tốc 0-100km/h (s):</td>
+                        <td style="text-align: right;">7.9</td>
+                    </tr>
+                    <tr>
+                        <td>Lượng nhiên liệu tiêu thụ kết hợp (l/100km): </td>
+                        <td style="text-align: right;">6.8</td>
+                    </tr>
+                    <tr>
+                        <td>Lượng phát thải CO2 kết hợp (g/km)</td>
+                        <td style="text-align: right;">156</td>
+                    </tr>
+
+                </table>
+                <div>
+                    <a href="https://drive.google.com/file/d/1i6yldXNVkOA4eQxbLtrEIBquYB3S7ljI/view"><button class="btn btn-primary mt-3">Tìm hiểu thêm về BMW 5 SERIES</button></a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="finance mt-5" id="finance">
+        <h1 style="height: 20px;"></h1> 
+        <div class="row mt-5">
+            <div class="col">
+                <h1>HỖ TRỢ TÀI CHÍNH DÀNH CHO CHIẾC BMW 5 SERIES.</h1>
+                <h2>Dịch vụ tài chính của BMW cho dòng xe BMW 5 SERIES.</h2>
+                <p>
+                    Các sản phẩm tài chính đặt hàng từ Dịch vụ Tài chính của BMW giúp bạn nhanh chóng và linh hoạt sở hữu chiếc xe của chính mình. 
+                    Các dịch vụ tài chính của chúng tôi đều được điều chỉnh cá nhân theo nhu cầu và mong muốn của bạn. 
+                    Tìm hiểu thêm về các giải pháp tài trợ hấp dẫn phù hợp cho chiếc BMW 5 SERIES mới của bạn.
+                </p>
+            </div>
+        </div>
+    </div>
+            <div class="col">
+                <div class="card">
+                    <img class="card-img-top" src="../../assets/images/models/bmw5/bmw5.7.webp" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- Phần "Dịch vụ & Phụ tùng", có khoảng cách phía trên (mt-5 = margin-top) và có id để điều hướng cuộn tới -->
+           <div class="service_parts mt-5" id="service_parts">
+            <h1 style="height: 10px;"></h1> 
+            <div class="row mt-5">
+                <div class="col">
+                    <h1>DỊCH VỤ VÀ HỖ TRỢ DÀNH CHO CHIẾC BMW 5 SERIES.</h1>
+                    <h2>DỊCH VỤ VÀ HỖ TRỢ DÀNH CHO CHIẾC BMW 5 SERIES.</h2>
+                    <p>Nếu bạn có bất kỳ thắc mắc hay cần thêm thông tin về các chương trình ưu đãi của BMW 5 SERIES, vui lòng liên hệ với đại lý BMW gần nhất. Đội ngũ nhân viên dịch vụ BMW thành thạo của chúng tôi sẽ vui lòng tư vấn cho từng cá nhân qua điện thoại hoặc trực tiếp tại chỗ.</p>
+                    <div>
+                        <a href="/index.html"><button class="btn btn-primary mt-3">Tìm Showroom BMW gần nhất</button></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img class="card-img-top" src="../../assets/images/models/bmw5/bmw5.8.webp" alt="">
+                    </div>
+ 
+                </div>
+            </div>
+            <div class="row mt-3">
+                <h1>Fuel consumption and CO2 emissions of the BMW 5 SERIES.</h1>
+                <p>Các giá trị về tiêu thụ nhiên liệu, khí thải CO2 và tiêu thụ năng lượng được xác định theo Quy định Châu Âu (EC) 715/2007 trong phiên bản áp dụng vào thời điểm chứng nhận loại xe. Các con số này áp dụng cho một chiếc xe có cấu hình cơ bản tại Đức và phạm vi hiển thị xem xét trang bị tùy chọn và các kích thước bánh xe và lốp xe khác nhau có sẵn trên mẫu xe được chọn.</p>
+                <p>Các thông số về hiệu suất khí thải CO2 được xác định theo Chỉ thị 1999/94/EC và Quy định Châu Âu trong phiên bản hiện hành áp dụng. Các giá trị hiển thị dựa trên tiêu thụ nhiên liệu, giá trị CO2 và tiêu thụ năng lượng theo chu trình NEDC để phân loại.</p>
+                <p>Để biết thêm thông tin về tiêu thụ nhiên liệu chính xác và khí thải CO2 cụ thể của các xe du lịch mới, bạn có thể xem trong "sổ tay về tiêu thụ nhiên liệu, khí thải CO2 và tiêu thụ năng lượng của các xe du lịch mới", có sẵn tại tất cả các điểm bán hàng và tại <a href="https://www.dat.de/angebote/verlagsprodukte/leitfaden-kraftstoffverbrauch.html" target="_blank" class="highlight-link">
+                    https://www.dat.de/angebote/verlagsprodukte/leitfaden-kraftstoffverbrauch.html</a>.</p>
+                <p>Tất cả dữ liệu kỹ thuật chỉ mang tính chất tham khảo và có thể thay đổi theo thị trường và cấu hình. Để biết thêm thông tin, vui lòng kiểm tra với đại lý địa phương của bạn về tất cả các thông số tiêu thụ nhiên liệu và khí thải CO2.</p>
+                <p>(*) Tất cả hình ảnh và video có thể khác so với phiên bản thực tế. Liên hệ showroom gần nhất để được tư vấn giá xe và phiên bản theo nhu cầu của bạn.</p>
+                <div>
+                    <a href="/find-us.html"><button class="btn btn-primary mt-3">Liên hệ showroom gần nhất.</button></a>
+                </div>
+            </div>
+        </div>
+</body>
+<footer><footer-component></footer-component></footer>
+</html>

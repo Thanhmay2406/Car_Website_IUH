@@ -427,9 +427,9 @@ class HeaderComponent extends HTMLElement {
 
         <header id="navbar">
             <img style="width: 3.125rem; height: 3.125rem; margin-left: 1.25rem; margin-top: 0.625rem;"
-                src="../assets/images/logo/logo.png" alt="">
+                src="/assets/images/logo/logo.png" alt="BMW Logo"> <!-- Sử dụng đường dẫn tuyệt đối -->
             <ul style="margin-left: 0.625rem; position: relative;">
-                <li><a href="../index.html">Trang chủ</a></li>
+                <li><a href="../../index.html">Trang chủ</a></li>
                 <li><a href="../../pages/models.html">Mẫu xe</a></li>
                 <li><a href="/pages/test-drive.html">Đặt hẹn lái xe thử</a></li>
                 <li><a href="../../pages/find-us.html">Hệ thống phân phối</a></li>
