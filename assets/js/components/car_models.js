@@ -437,14 +437,14 @@ class HeaderComponent extends HTMLElement {
                         <div class="dropdown-section">
                             <h4>BẢO HÀNH VÀ BẢO DƯỠNG</h4>
                             <div class="dropdown-grid">
-                                <a href="">Chính sách bảo hành BMW</a>
+                                <a href="/pages/warranties.html">Chính sách bảo hành BMW</a>
                             </div>
                         </div>
 
                         <div class="dropdown-section">
                             <h4>XE ĐIỆN</h4>
                             <div class="dropdown-grid">
-                                <a href="">Charning</a>
+                                <a href="/pages/charging-new.html">Charning</a>
                                 <a href="">Plug-in Hybrid</a>
                             </div>
                         </div>
