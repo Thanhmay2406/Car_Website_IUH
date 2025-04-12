@@ -1,4 +1,5 @@
 # Car_Website_IUH
+## Đây là bài tập lớn môn hệ thống và công nghệ web IUH - K19
 ## Giải thích cây thư mục của dự án:
 - `index.html`: Trang chính của dự án
 - `assets/`: Chứa các tài nguyên như CSS, JavaScript, hình ảnh và font.
