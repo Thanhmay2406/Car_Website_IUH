@@ -487,7 +487,7 @@ class HeaderComponent extends HTMLElement {
                             <h4>DỊCH VỤ VÀ SỬA CHỮA</h4>
                             <a href="">Ưu đãi 18% giá phụ tùng chính hãng</a>
                             <a href="">Khám phá Dịch vụ BMW</a>
-                            <a href="">Chăm sóc chủ động Proactive Care</a>
+                            <a href="/pages/bmw-proactive-care.html">Chăm sóc chủ động Proactive Care</a>
                             <a href="/pages/bmw-service-inclusive.html">Bảo dưỡng trọn gói BSI</a>
                             <a href="/pages/bmw-repair-and-care-overview.html">Dịch vụ sửa chữa đồng sơn BMW</a>
                             <a href="/pages/bmw-roadside-assistance.html">Hỗ trợ sự cố Roadside Assistance</a>
