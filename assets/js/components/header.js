@@ -21,30 +21,33 @@ class HeaderComponent extends HTMLElement {
     render() {
         this.shadowRoot.innerHTML = `
         <style>
-            /* Các style hiện tại của header */
+            /* Định nghĩa font chữ Lexend Deca */
             @font-face {
                 font-family: "Lexend_Deca";
                 src: url(../../fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf);
                 font-weight: normal;
             }
 
+            /* Cấu trúc và kiểu dáng của navbar */
             #navbar {
                 display: flex;
             }
 
+            /* Kiểu dáng chung cho header */
             header {
-                z-index: 1000;
+                z-index: 1000; /* Đảm bảo header luôn nằm trên các phần tử khác */
                 padding: 0;
                 margin: 0;
-                position: fixed;
+                position: fixed; /* Cố định header khi cuộn */
                 width: 100%;
                 top: 0;
                 left: 0;
                 height: 4.0625rem;
-                background-color: rgba(0, 0, 0, 0);
-                transition: background 0.3s ease, box-shadow 0.3s ease;
+                background-color: rgba(0, 0, 0, 0); /* Nền trong suốt mặc định */
+                transition: background 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển đổi */
             }
 
+            /* Hiệu ứng hover cho header */
             header:hover {
                 background-color: white;
                 color: black;
@@ -54,6 +57,7 @@ class HeaderComponent extends HTMLElement {
                 color: black;
             }
 
+            /* Kiểu dáng cho danh sách điều hướng */
             ul {
                 display: flex;
                 font-family: "Lexend_Deca", sans-serif;
@@ -70,6 +74,7 @@ class HeaderComponent extends HTMLElement {
                 position: relative;
             }
 
+            /* Kiểu dáng cho liên kết trong danh sách */
             ul li a {
                 padding: 1.25rem 0.625rem;
                 text-decoration: none;
@@ -81,6 +86,7 @@ class HeaderComponent extends HTMLElement {
                 align-items: center;
             }
 
+            /* Hiệu ứng gạch chân khi hover */
             ul li:not(.dropdown) a::after {
                 content: "";
                 position: absolute;
@@ -104,6 +110,7 @@ class HeaderComponent extends HTMLElement {
                 width: 100%;
             }
 
+            /* Kiểu dáng khi header ở trạng thái cuộn */
             .scrolled {
                 background-color: white !important;
                 box-shadow: 0px 0.125rem 0.625rem rgba(0, 0, 0, 0.1) !important;
@@ -121,6 +128,7 @@ class HeaderComponent extends HTMLElement {
                 background: #3878d6 !important;
             }
 
+            /* Kiểu dáng cho dropdown */
             .dropdown {
                 position: relative;
             }
@@ -142,6 +150,7 @@ class HeaderComponent extends HTMLElement {
                 scrollbar-color: #3878d6 #f1f1f1;
             }
 
+            /* Tùy chỉnh thanh cuộn cho dropdown */
             .dropdown-content::-webkit-scrollbar {
                 width: 6px;
             }
@@ -159,6 +168,7 @@ class HeaderComponent extends HTMLElement {
                 display: block;
             }
 
+            /* Kiểu dáng cho liên kết trong dropdown */
             .dropdown-content a {
                 color: black !important;
                 padding: 0.5rem 1rem;
@@ -174,6 +184,7 @@ class HeaderComponent extends HTMLElement {
                 background-color: #f8f9fa;
             }
 
+            /* Kiểu dáng cho các phần khác */
             .dropdown-section {
                 margin-bottom: 0.8rem;
             }
