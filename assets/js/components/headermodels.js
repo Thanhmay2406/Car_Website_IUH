@@ -427,9 +427,9 @@ class HeaderComponent extends HTMLElement {
                 src="../../assets/images/logo/logo.png" alt="">
             <ul style="margin-left: 0.625rem; position: relative;">
                 <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="../pages/models.html" id="br">Mẫu xe</a></li>
+                <li><a href="../pages/models.html" style="font-weight: Bold;" id="br">Mẫu xe</a></li>
                 <li><a href="/pages/test-drive.html">Đặt hẹn lái xe thử</a></li>
-                <li><a href="/pages/find-us.html">Hệ thống phân phối</a></li>
+                <li><a href="">Hệ thống phân phối</a></li>
                 <li class="dropdown">
                     <a href="">Tìm hiểu thêm</a>
                     <div class="dropdown-content">
@@ -437,30 +437,30 @@ class HeaderComponent extends HTMLElement {
                         <div class="dropdown-section">
                             <h4>BẢO HÀNH VÀ BẢO DƯỠNG</h4>
                             <div class="dropdown-grid">
-                                <a href="/pages/warranties.html">Chính sách bảo hành BMW</a>
+                                <a href="/pages/more/warranties.html">Chính sách bảo hành BMW</a>
                             </div>
                         </div>
 
                         <div class="dropdown-section">
                             <h4>XE ĐIỆN</h4>
                             <div class="dropdown-grid">
-                                <a href="/pages/charging-new.html">Charning</a>
-                                <a href="/pages/plug-in-hybrids-new.html">Plug-in Hybrid</a>
+                                <a href="/pages/more/charging-new.html">Charning</a>
+                                <a href="/pages/more/plug-in-hybrids-new.html">Plug-in Hybrid</a>
                             </div>
                         </div>
 
                         <div class="dropdown-section">
                             <h4>CÔNG NGHỆ VÀ ĐỔI MỚI</h4>
                             <div class="dropdown-grid">
-                                <a href="/pages/technology-innovation/bmw-vision-m-next.html">BMW Vision M NEXT</a>
-                                <a href="/pages/bmw-vision-ivisiondee-2023.html">BMW i Vision DEE</a>
+                                <a href="/pages/more/bmw-vision-m-next.html">BMW Vision M NEXT</a>
+                                <a href="/pages/more/bmw-vision-ivisiondee-2023.html">BMW i Vision DEE</a>
                             </div>
                         </div>
 
                         <div class="dropdown-section">
                             <h4>CHƯƠNG TRÌNH BÁN HÀNG DOANH NGHIỆP</h4>
                             <div class="dropdown-grid">
-                                <a href="/pages/corporate-sales-overview.html">Chương trình bán hàng doanh nghiệp 2024</a>
+                                <a href="/pages/more/corporate-sales-overview.html">Chương trình bán hàng doanh nghiệp 2024</a>
                             </div>
                         </div>
 
@@ -482,12 +482,12 @@ class HeaderComponent extends HTMLElement {
 
                         <div class="dropdown-section">
                             <h4>DỊCH VỤ VÀ SỬA CHỮA</h4>
-                            <a href="/pages/bmw-value-service-promotion.html">Ưu đãi 18% giá phụ tùng chính hãng</a>
-                            <a href="/pages/bmw-service-new.html">Khám phá Dịch vụ BMW</a>
-                            <a href="/pages/bmw-proactive-care.html">Chăm sóc chủ động Proactive Care</a>
-                            <a href="/pages/bmw-service-inclusive.html">Bảo dưỡng trọn gói BSI</a>
-                            <a href="/pages/bmw-repair-and-care-overview.html">Dịch vụ sửa chữa đồng sơn BMW</a>
-                            <a href="/pages/bmw-roadside-assistance.html">Hỗ trợ sự cố Roadside Assistance</a>
+                            <a href="/pages/more/bmw-value-service-promotion.html">Ưu đãi 18% giá phụ tùng chính hãng</a>
+                            <a href="/pages/more/bmw-service-new.html">Khám phá Dịch vụ BMW</a>
+                            <a href="/pages/more/bmw-proactive-care.html">Chăm sóc chủ động Proactive Care</a>
+                            <a href="/pages/more/bmw-service-inclusive.html">Bảo dưỡng trọn gói BSI</a>
+                            <a href="/pages/more/bmw-repair-and-care-overview.html">Dịch vụ sửa chữa đồng sơn BMW</a>
+                            <a href="/pages/more/bmw-roadside-assistance.html">Hỗ trợ sự cố Roadside Assistance</a>
                         </div>
                         
                     </div>
