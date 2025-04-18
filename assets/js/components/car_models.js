@@ -556,7 +556,7 @@ class HeaderComponent extends HTMLElement {
                         <div class="form-group">
                             <label for="regName">Họ và tên</label>
                             <input type="text" id="regName" placeholder="Nhập họ và tên">
-                            <div class="error-message" id="nameError">Vui lòng nhập họ và tên</div>
+                            <div class="error-message" id="nameError">Vui lòng nhập họ và tên hợp lệ</div>
                         </div>
                         <div class="form-group">
                             <label for="regEmail">Email</label>
