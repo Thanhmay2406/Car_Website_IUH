@@ -727,7 +727,7 @@ class HeaderComponent extends HTMLElement {
         this.shadowRoot.getElementById('password').value = '';
         this.shadowRoot.getElementById('usernameError').style.display = 'none';
         this.shadowRoot.getElementById('passwordError').style.display = 'none';
-        
+
         // Reset register form
         this.shadowRoot.getElementById('regName').value = '';
         this.shadowRoot.getElementById('regEmail').value = '';
@@ -763,7 +763,22 @@ class HeaderComponent extends HTMLElement {
 
         if (isValid) {
             // Thực hiện xử lý đăng nhập thực tế ở đây
-            console.log('Đăng nhập với:', { username, password });
+            // console.log('Đăng nhập với:', { username, password });
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            const matchedUser = users.find(user =>
+                (user.email === username || user.phone === username) &&
+                user.password === password
+            );
+
+            if (matchedUser) {
+                this.handleLoginSuccess(matchedUser.name);
+                this.shadowRoot.getElementById('authModal').style.display = 'none';
+                alert('Đăng nhập thành công!');
+            } else {
+                alert('Thông tin đăng nhập không đúng!');
+                return false;
+            }
         }
 
         return isValid;
@@ -821,7 +836,21 @@ class HeaderComponent extends HTMLElement {
 
         if (isValid) {
             // Thực hiện xử lý đăng ký thực tế ở đây
-            console.log('Đăng ký với:', { name, email, phone, password });
+            // console.log('Đăng ký với:', { name, email, phone, password });
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            const isEmailTaken = users.some(user => user.email === email);
+            if (isEmailTaken) {
+                alert('Email đã được sử dụng!');
+                return false;
+            }
+
+            users.push({ name, email, phone, password });
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert('Đăng ký thành công!');
+            this.showLoginForm();
+            return true;
         }
 
         return isValid;
