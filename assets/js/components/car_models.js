@@ -427,7 +427,7 @@ class HeaderComponent extends HTMLElement {
                 src="../../assets/images/logo/logo.png" alt="">
             <ul style="margin-left: 0.625rem; position: relative;">
                 <li><a href="../../index.html">Trang chủ</a></li>
-                <li><a href="../models.html" style="font-weight: Bold;" id="br">Mẫu xe</a></li>
+                <li><a href="../pages/models.html" style="font-weight: Bold;" id="br">Mẫu xe</a></li>
                 <li><a href="/pages/test-drive.html">Đặt hẹn lái xe thử</a></li>
                 <li><a href="">Hệ thống phân phối</a></li>
                 <li class="dropdown">
@@ -452,7 +452,7 @@ class HeaderComponent extends HTMLElement {
                         <div class="dropdown-section">
                             <h4>CÔNG NGHỆ VÀ ĐỔI MỚI</h4>
                             <div class="dropdown-grid">
-                                <a href="/pages/more//bmw-vision-m-next.html">BMW Vision M NEXT</a>
+                                <a href="/pages/more/bmw-vision-m-next.html">BMW Vision M NEXT</a>
                                 <a href="/pages/more/bmw-vision-ivisiondee-2023.html">BMW i Vision DEE</a>
                             </div>
                         </div>
@@ -461,14 +461,6 @@ class HeaderComponent extends HTMLElement {
                             <h4>CHƯƠNG TRÌNH BÁN HÀNG DOANH NGHIỆP</h4>
                             <div class="dropdown-grid">
                                 <a href="/pages/more/corporate-sales-overview.html">Chương trình bán hàng doanh nghiệp 2024</a>
-                            </div>
-                        </div>
-
-                        <div class="dropdown-section">
-                            <h4>THƯƠNG HIỆU BMW</h4>
-                            <div class="dropdown-grid">
-                                <a href="">Tìm hiểu BMW Asia</a>
-                                <a href="">BMW PressClub Asia</a>
                             </div>
                         </div>
 
@@ -494,6 +486,9 @@ class HeaderComponent extends HTMLElement {
                 </li>
                 <li style="position: absolute; right: 6.25rem;" class="account-wrapper">
                     <a href="#" id="loginLink">Đăng nhập</a>
+                    <div class="account-dropdown" id="accountDropdown">
+                        <a href="#" id="logoutLink">Đăng xuất</a>
+                    </div>
                 </li>
                 <li style="position: absolute; right: 1.875rem;">
                     <a
@@ -556,7 +551,7 @@ class HeaderComponent extends HTMLElement {
                         <div class="form-group">
                             <label for="regName">Họ và tên</label>
                             <input type="text" id="regName" placeholder="Nhập họ và tên">
-                            <div class="error-message" id="nameError">Vui lòng nhập họ và tên hợp lệ</div>
+                            <div class="error-message" id="nameError">Vui lòng nhập họ và tên</div>
                         </div>
                         <div class="form-group">
                             <label for="regEmail">Email</label>
@@ -613,12 +608,22 @@ class HeaderComponent extends HTMLElement {
         const registerTab = this.shadowRoot.getElementById('registerTab');
         const loginForm = this.shadowRoot.getElementById('loginForm');
         const registerForm = this.shadowRoot.getElementById('registerForm');
+        const regNameInput = this.shadowRoot.getElementById('regName');
+        const regEmailInput = this.shadowRoot.getElementById('regEmail');
+        const regPhoneInput = this.shadowRoot.getElementById('regPhone');
+        const regPasswordInput = this.shadowRoot.getElementById('regPassword');
+        const regConfirmPasswordInput = this.shadowRoot.getElementById('regConfirmPassword');
 
         // Mở modal khi click đăng nhập
         loginLink.addEventListener('click', (e) => {
             e.preventDefault();
-            modal.style.display = 'block';
-            this.showLoginForm();
+            if (!this.isLoggedIn) {
+                modal.style.display = 'block';
+                this.showLoginForm();
+            } else {
+                const accountDropdown = this.shadowRoot.getElementById('accountDropdown');
+                accountDropdown.style.display = accountDropdown.style.display === 'block' ? 'none' : 'block';
+            }
         });
 
         // Đóng modal
@@ -659,12 +664,21 @@ class HeaderComponent extends HTMLElement {
 
         // Xử lý đăng nhập
         loginBtn.addEventListener('click', () => {
-            this.validateLoginForm();
+            // this.validateLoginForm();
+            if (this.validateLoginForm()) {
+                const username = this.shadowRoot.getElementById('username').value.trim();
+                this.handleLoginSuccess(username);
+                closeModal();
+            }
         });
 
         // Xử lý đăng ký
         registerBtn.addEventListener('click', () => {
-            this.validateRegisterForm();
+            // this.validateRegisterForm();
+            if (this.validateRegisterForm()) {
+                alert('Đã đăng ký thành công!');
+                closeModal();
+            }
         });
 
         // Xử lý quên mật khẩu
@@ -673,10 +687,37 @@ class HeaderComponent extends HTMLElement {
             alert('Chức năng quên mật khẩu sẽ được gửi đến email của bạn!');
         });
 
+        if (logoutLink) {
+            logoutLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.handleLogout();
+            });
+        }
+
         // Xử lý đăng xuất
-        logoutLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            this.handleLogout();
+        // logoutLink.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     this.handleLogout();
+        // });
+
+        regNameInput.addEventListener('blur', () => {
+            this.validateName();
+        });
+
+        regEmailInput.addEventListener('blur', () => {
+            this.validateEmail();
+        });
+
+        regPhoneInput.addEventListener('blur', () => {
+            this.validatePhone();
+        });
+
+        regPasswordInput.addEventListener('blur', () => {
+            this.validatePassword();
+        });
+
+        regConfirmPasswordInput.addEventListener('blur', () => {
+            this.validateConfirmPassword();
         });
 
         // Cho phép submit form bằng phím Enter
@@ -732,7 +773,6 @@ class HeaderComponent extends HTMLElement {
         const username = this.shadowRoot.getElementById('username').value.trim();
         const password = this.shadowRoot.getElementById('password').value.trim();
 
-        // Validate
         if (!username) {
             this.shadowRoot.getElementById('usernameError').style.display = 'block';
             isValid = false;
@@ -747,89 +787,89 @@ class HeaderComponent extends HTMLElement {
             this.shadowRoot.getElementById('passwordError').style.display = 'none';
         }
 
-        if (isValid) {
-            // Thực hiện xử lý đăng nhập thực tế ở đây
-            console.log('Đăng nhập với:', { username, password });
-        }
-
         return isValid;
     }
 
-    validateRegisterForm() {
-        let isValid = true;
+    validateName() {
         const name = this.shadowRoot.getElementById('regName').value.trim();
-        const email = this.shadowRoot.getElementById('regEmail').value.trim();
-        const phone = this.shadowRoot.getElementById('regPhone').value.trim();
-        const password = this.shadowRoot.getElementById('regPassword').value.trim();
-        const confirmPassword = this.shadowRoot.getElementById('regConfirmPassword').value.trim();
-
-        // Validate name
-        if (!name) {
+        const nameRegex = /^([A-ZÀ-Ỹ][a-zà-ỹ]+)(\s[A-ZÀ-Ỹ][a-zà-ỹ]+)+$/;
+        if (!name || !nameRegex.test(name)) {
             this.shadowRoot.getElementById('nameError').style.display = 'block';
-            isValid = false;
+            return false;
         } else {
             this.shadowRoot.getElementById('nameError').style.display = 'none';
+            return true;
         }
+    }
 
-        // Validate email
+    validateEmail() {
+        const email = this.shadowRoot.getElementById('regEmail').value.trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email || !emailRegex.test(email)) {
             this.shadowRoot.getElementById('emailError').style.display = 'block';
-            isValid = false;
+            return false;
         } else {
             this.shadowRoot.getElementById('emailError').style.display = 'none';
+            return true;
         }
+    }
 
-        // Validate phone
+    validatePhone() {
+        const phone = this.shadowRoot.getElementById('regPhone').value.trim();
         const phoneRegex = /^\d{10,15}$/;
         if (!phone || !phoneRegex.test(phone)) {
             this.shadowRoot.getElementById('phoneError').style.display = 'block';
-            isValid = false;
+            return false;
         } else {
             this.shadowRoot.getElementById('phoneError').style.display = 'none';
+            return true;
         }
+    }
 
-        // Validate password
+    validatePassword() {
+        const password = this.shadowRoot.getElementById('regPassword').value.trim();
         if (!password || password.length < 6) {
             this.shadowRoot.getElementById('regPasswordError').style.display = 'block';
-            isValid = false;
+            return false;
         } else {
             this.shadowRoot.getElementById('regPasswordError').style.display = 'none';
+            return true;
         }
+    }
 
-        // Validate confirm password
+    validateConfirmPassword() {
+        const password = this.shadowRoot.getElementById('regPassword').value.trim();
+        const confirmPassword = this.shadowRoot.getElementById('regConfirmPassword').value.trim();
         if (password !== confirmPassword) {
             this.shadowRoot.getElementById('confirmPasswordError').style.display = 'block';
-            isValid = false;
+            return false;
         } else {
             this.shadowRoot.getElementById('confirmPasswordError').style.display = 'none';
+            return true;
         }
+    }
 
-        if (isValid) {
-            // Thực hiện xử lý đăng ký thực tế ở đây
-            console.log('Đăng ký với:', { name, email, phone, password });
-        }
+    validateRegisterForm() {
+        const isNameValid = this.validateName();
+        const isEmailValid = this.validateEmail();
+        const isPhoneValid = this.validatePhone();
+        const isPasswordValid = this.validatePassword();
+        const isConfirmPasswordValid = this.validateConfirmPassword();
 
-        return isValid;
+        return isNameValid && isEmailValid && isPhoneValid && isPasswordValid && isConfirmPasswordValid;
     }
 
     checkLoginState() {
         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        if (isLoggedIn) {
-            this.updateLoginState(true);
-        }
+        this.updateLoginState(isLoggedIn);
     }
 
     handleLoginSuccess(username) {
         this.isLoggedIn = true;
         const loginLink = this.shadowRoot.getElementById('loginLink');
-        loginLink.textContent = username.split(' ')[0] || 'Tài khoản';
-
-        // Lưu trạng thái đăng nhập vào localStorage
+        loginLink.textContent = username.trim() ? username.split(' ')[0] : 'Tài khoản';
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('username', username);
-
-        // Cập nhật giao diện
         this.updateLoginState(true);
     }
 
@@ -849,13 +889,19 @@ class HeaderComponent extends HTMLElement {
     updateLoginState(isLoggedIn) {
         const loginLink = this.shadowRoot.getElementById('loginLink');
         const accountDropdown = this.shadowRoot.getElementById('accountDropdown');
+        this.isLoggedIn = isLoggedIn;
 
         if (isLoggedIn) {
             const username = localStorage.getItem('username') || 'Tài khoản';
-            loginLink.textContent = username.split(' ')[0] || username;
-            accountDropdown.style.display = 'none';
+            loginLink.textContent = username.trim() ? username : 'Tài khoản';
+            if (accountDropdown) {
+                accountDropdown.style.display = 'none'; // Ẩn mặc định, hiển thị khi nhấp
+            }
         } else {
             loginLink.textContent = 'Đăng nhập';
+            if (accountDropdown) {
+                accountDropdown.style.display = 'none'; // Ẩn dropdown khi chưa đăng nhập
+            }
         }
     }
 
@@ -870,6 +916,21 @@ class HeaderComponent extends HTMLElement {
 
     disconnectedCallback() {
         window.removeEventListener("scroll", this.handleScroll);
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'always-scrolled') {
+            const header = this.shadowRoot.querySelector("header");
+            if (header) {
+                if (newValue !== null) {
+                    header.classList.add("scrolled");
+                    window.removeEventListener("scroll", this.handleScroll);
+                } else {
+                    header.classList.remove("scrolled");
+                    window.addEventListener("scroll", this.handleScroll);
+                }
+            }
+        }
     }
 }
 

@@ -460,13 +460,6 @@ class HeaderComponent extends HTMLElement {
                             </div>
                         </div>
                         <div class="dropdown-section">
-                            <h4>THƯƠNG HIỆU BMW</h4>
-                            <div class="dropdown-grid">
-                                <a href="">Tìm hiểu BMW Asia</a>
-                                <a href="">BMW PressClub Asia</a>
-                            </div>
-                        </div>
-                        <div class="dropdown-section">
                             <h4>ƯU ĐÃI ĐẶC BIỆT CHO KHÁCH HÀNG</h4>
                             <div class="dropdown-grid">
                                 <a href="">Ưu đãi đặc biệt cho khách hàng thân thiết</a>
@@ -624,11 +617,6 @@ class HeaderComponent extends HTMLElement {
             if (e.target === modal) {
                 closeModal();
             }
-            // Ẩn dropdown nếu nhấp ra ngoài
-            // const accountDropdown = this.shadowRoot.getElementById('accountDropdown');
-            // if (accountDropdown && !loginLink.contains(e.target) && !accountDropdown.contains(e.target)) {
-            //     accountDropdown.style.display = 'none';
-            // }
         });
 
         switchToRegister.addEventListener('click', (e) => {
@@ -764,7 +752,7 @@ class HeaderComponent extends HTMLElement {
 
     validateName() {
         const name = this.shadowRoot.getElementById('regName').value.trim();
-        const nameRegex = /^[A-Za-zÀ-ỹà-ỹ\s]{2,50}$/;
+        const nameRegex = /^([A-ZÀ-Ỹ][a-zà-ỹ]+)(\s[A-ZÀ-Ỹ][a-zà-ỹ]+)+$/;
         if (!name || !nameRegex.test(name)) {
             this.shadowRoot.getElementById('nameError').style.display = 'block';
             return false;
@@ -861,7 +849,7 @@ class HeaderComponent extends HTMLElement {
 
         if (isLoggedIn) {
             const username = localStorage.getItem('username') || 'Tài khoản';
-            loginLink.textContent = username.trim() ? username.split(' ')[0] : 'Tài khoản';
+            loginLink.textContent = username.trim() ? username : 'Tài khoản';
             if (accountDropdown) {
                 accountDropdown.style.display = 'none'; // Ẩn mặc định, hiển thị khi nhấp
             }
